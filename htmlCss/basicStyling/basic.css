@@ -17,3 +17,15 @@
 .lorem {
   color: lightskyblue;
 }
+
+.box {
+  width: 150px;
+  height: 100px;
+  background-color: aqua;
+  margin: auto;
+  padding: 40px;
+  border: 4px solid black;
+  border-radius: 30%;
+  text-align: center;
+  box-shadow: 10px 10px black;
+}
