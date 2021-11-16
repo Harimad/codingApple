@@ -6,9 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+
+	<!-- normalize css cdn -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+		integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<style>
 		* {
 			margin: 0;
+		}
+
+		div {
+			/* 이렇게 시작하면 편함 */
+			box-sizing: border-box;
 		}
 
 		.main-background {
@@ -63,15 +74,25 @@
 		}
 
 		.main-description {
-			position: absolute;
-			left: 0;
-			right: 0;
+			position: relative;
+			top: -40px;
 			margin: auto;
-			width: 500px;
+			width: 600px;
+
 			bottom: -25%;
+
+			/* content영역 너비(padding, margin 미포함) */
+			/* box-sizing: content-box; */
+
+			/* content영역 너비(padding, margin 포함) */
+			box-sizing: border-box;
+			max-width: 600px;
 
 			padding: 20px;
 			background: #eee;
+
+			/* 붕 뜬것 중에 중요도를 주기 */
+			/* z-index: -1; */
 		}
 
 		.main-description>h3 {
@@ -90,12 +111,23 @@
 			esse magna irure incididunt id proident culpa incididunt qui sint.
 		</p>
 		<button class="main-btn">Buy Now!</button>
-		<div class="main-description">
-			<h3>How we design our shoes</h3>
-			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
-				sunt voluptates consequuntur aliquam suscipit debitis, tenetur laudantium maiores esse aspernatur magni aut
-				praesentium nemo rerum?</p>
-		</div>
+	</div>
+
+
+	<div class="main-description">
+		<h3>How we design our shoes</h3>
+		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
+			sunt voluptates consequuntur aliquam suscipit debitis, tenetur laudantium maiores esse aspernatur magni aut
+			praesentium nemo rerum?</p>
+	</div>
+
+	<br>
+
+	<div class="main-description">
+		<h3>How we design our shoes</h3>
+		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
+			sunt voluptates consequuntur aliquam suscipit debitis, tenetur laudantium maiores esse aspernatur magni aut
+			praesentium nemo rerum?</p>
 	</div>
 </body>
 
