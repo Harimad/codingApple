@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>contact us</title>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		body {
+			background-color: burlywood;
+		}
+
+		input[type="text"] {
+			font-size: 24px;
+			border-radius: 5px;
+			border-color: #eee;
+			margin-bottom: 10px;
+		}
+
+		.container {
+			width: 700px;
+			background-color: white;
+			margin: auto;
+			padding: 40px;
+		}
+
+		.container>h1 {
+			margin-bottom: 20px;
+		}
+
+		.box-email>input {
+			width: 100%;
+		}
+
+		.first-name {
+			float: left;
+			width: 30%;
+		}
+
+		.last-name {
+			float: right;
+			width: 50%;
+		}
+
+		.box-message {
+			clear: both;
+		}
+
+		.box-message>input {
+			width: 100%;
+			height: 50px;
+		}
+
+		.box-footer {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.box-footer>div {
+			display: flex;
+		}
+
+		.box-footer>div>h4 {
+			margin-left: 10px;
+		}
+
+		input[type=submit] {
+			width: 150px;
+			height: 32px;
+			color: white;
+			background-color: tomato;
+			border: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<h1>contact us</h1>
+
+		<div class="box-email">
+			<h3>Your Email</h3>
+			<input type="text" name="" id="" placeholder="email@example.com">
+		</div>
+
+		<div class="box-name">
+			<div class="first-name">
+				<h3>First name</h3>
+				<input type="text">
+			</div>
+			<div class="last-name">
+				<h3>Last name</h3>
+				<input type="text">
+			</div>
+		</div>
+
+		<div class="box-message">
+			<h3>Message</h3>
+			<input type="text">
+		</div>
+
+		<div class="box-footer">
+			<div>
+				<input type="checkbox">
+				<h4>Subscribe</h4>
+			</div>
+			<input type="submit" value="SEND">
+		</div>
+	</div>
+</body>
+
+</html>
