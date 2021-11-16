@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		.main-background {
+			width: 100%;
+			height: 500px;
+			background-image: url(img/shoes.jpg);
+			/* cover 는 알아서 채워줌. 자주씀 */
+			background-size: cover;
+			background-repeat: no-repeat;
+			/* 배경을 중앙부터 채워줌 */
+			background-position: center;
+			/* 인스타 처럼 필터넣기 */
+			/* filter: brightness(50%); */
+
+			/* margin collapse 현상(두 block이 만나면 margin이 겹침) */
+			/* padding에 1을 주어서 margin collapse현상을 없앰 */
+			padding: 1px;
+			text-align: center;
+
+			position: relative;
+		}
+
+		.main-title {
+			color: white;
+			font-size: 40px;
+			margin-top: 200px;
+		}
+
+		.main-text {
+			margin: 20px 0 20px 0;
+			color: white;
+		}
+
+		.main-btn {
+			margin-top: 20px;
+			padding: 10px 20px 10px 20px;
+			font-size: 20px;
+			background-color: white;
+			border: none;
+			border-radius: 5px;
+
+			/* position: relative(내 원래 위치 기준) -> 1.좌표이동 가능, 2.공중에뜸 */
+			/* position: static 은 좌표이동 X */
+			/* position: fixed는 현재 화면이 기준 -> 달라붙음 */
+			/* position: absolute 는 내 부모 태그(relative가진)가 기준 */
+			position: absolute;
+			/* 중앙정렬 방법 */
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 150px;
+		}
+
+		.main-description {
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 500px;
+			bottom: -25%;
+
+			padding: 20px;
+			background: #eee;
+		}
+
+		.main-description>h3 {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main-background">
+		<h4 class="main-title">Buy Our Shoes!</h4>
+		<p class="main-text">Sit eiusmod eiusmod laborum laboris anim nulla et officia. Laboris est quis anim elit aliqua id
+			exercitation aute
+			aute cillum ipsum labore labore ad. Sit aute consectetur ad laborum in irure qui aliqua amet. Ea mollit voluptate
+			ex laboris Lorem consequat nostrud id Lorem veniam laboris excepteur magna cupidatat. Proident ea ad irure minim
+			esse magna irure incididunt id proident culpa incididunt qui sint.
+		</p>
+		<button class="main-btn">Buy Now!</button>
+		<div class="main-description">
+			<h3>How we design our shoes</h3>
+			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
+				sunt voluptates consequuntur aliquam suscipit debitis, tenetur laudantium maiores esse aspernatur magni aut
+				praesentium nemo rerum?</p>
+		</div>
+	</div>
+</body>
+
+</html>
