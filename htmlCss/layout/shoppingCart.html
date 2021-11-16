@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ShoppingCart</title>
+	<style>
+		.cart-background {
+			width: 100%;
+			background-color: #c2d3de;
+			padding: 30px;
+		}
+
+		.cart-table {
+			width: 100%;
+			max-width: 700px;
+			margin: auto;
+			background: white;
+			border-radius: 10px;
+		}
+
+		.cart-table td,
+		.cart-table th {
+			padding: 15px;
+			border-bottom: 1px solid #c2d3de;
+		}
+
+		.item-img {
+			width: 50px;
+		}
+
+		.cart-table th:nth-child(2) {
+			width: 400px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="cart-background">
+		<h3>Your Shopping Cart</h3>
+		<table class="cart-table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Item</th>
+					<th>Amount</th>
+					<th>Price</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><img class="item-img" src="http://placekitten.com/100/100" alt=""></td>
+					<td>카메라</td>
+					<td>1</td>
+					<td>7000</td>
+					<td>7000</td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align: right;">총가격 : 7000</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
