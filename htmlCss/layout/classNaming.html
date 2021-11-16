@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>classNaming(OOCSS, BEM)</title>
+	<style>
+		/* 유지보수 굿 */
+
+		/* 뼈대 디자인 class */
+		.main-btn {
+			padding: 15px;
+			font-size: 20px;
+			border: none;
+			cursor: pointer;
+		}
+
+		/* 색깔놀이 */
+		.bg-red {
+			background: red;
+		}
+
+		.bg-blue {
+			background: blue;
+		}
+
+		/* Utility Class */
+		.f-tiny {
+			font-size: 8px;
+		}
+
+		.f-small {
+			font-size: 12px;
+		}
+
+		.f-mid {
+			font-size: 16px;
+		}
+
+		.f-lg {
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- OOCSS: Object Orient CSS -->
+	<!-- 강의자는 이게 더 낫다고함 -->
+	<button class="main-btn bg-red f-lg">더 알아보기</button>
+	<button class="main-btn bg-blue">구매하기</button>
+
+	<!-- 클래스 작명 창의력 딸리면?  -> BEM(Block__Element--Modifier)-->
+	<!-- class="덩어리이름__역할--세부특징" -->
+	<div class="profile">
+		<img class="profile__img" src="" alt="">
+		<h4 class="profile__title"></h4>
+		<p class="profile__content"></p>
+		<button class="profile__button--red">Btn1</button>
+		<button class="profile__button--blue">Btn2</button>
+	</div>
+
+	<!-- 요즘은 React, Vue로 HTML만들게 되면OOCSS, BEM 굳이 안써도 잘함 -->
+	<!-- React, Vue쓰면 덩어리(Component)단위로 HTML파일 나눠서 코드짬 + Component에만 사용가능한 CSS생성가능 -->
+	<!-- 다른 덩어리끼리는 class 겹쳐도 상관 X -> 간편 -->
+</body>
+
+</html>
