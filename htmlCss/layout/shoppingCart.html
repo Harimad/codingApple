@@ -34,6 +34,51 @@
 		.cart-table th:nth-child(2) {
 			width: 400px;
 		}
+
+		.btn {
+			padding: 15px;
+			font-size: 20px;
+			border: none;
+			border-radius: 10px;
+			background-color: coral;
+			color: white;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: chocolate;
+		}
+
+
+		.btn:focus {
+			background-color: cornflowerblue;
+		}
+
+		.btn:active {
+			background-color: brown;
+			border: 2px solid black;
+		}
+
+		.input-test {
+			font-size: 20px;
+		}
+
+		.input-test:focus {
+			border: 5px solid red;
+		}
+
+		.custom-link {
+			text-decoration: none;
+		}
+
+		/* 방문전 링크 */
+		.custom-link:link {
+			color: red;
+		}
+
+		.custom-link:visited {
+			color: green;
+		}
 	</style>
 </head>
 
@@ -63,6 +108,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<button class="btn">구매하기</button>
+		<input class="input-test" type="text">
+		<a href="#" class="custom-link">Link</a>
 	</div>
 </body>
 
