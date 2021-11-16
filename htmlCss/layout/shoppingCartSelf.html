@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shopping Cart</title>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		body {
+			background: lightblue;
+		}
+
+		.container {
+			width: 60%;
+			margin: auto;
+		}
+
+		.table-box {
+			background: #eee;
+			border-radius: 5px;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		thead tr,
+		tbody tr,
+		tfoot tr {
+			border-bottom: 1px solid black;
+		}
+
+		thead th,
+		tbody td {
+			padding: 10px;
+		}
+
+		.item-content {
+			display: flex;
+		}
+
+		.item-content img {
+			padding: 10px;
+		}
+
+		footer {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px 0 0 0;
+		}
+
+		footer>button {
+			padding: 20px;
+			background: steelblue;
+			color: white;
+			border-radius: 5px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<h2>Your shopping cart</h2>
+		</div>
+		<div class="table-box">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">ITEM</th>
+						<th>AMOUNT</th>
+						<th>PRICE</th>
+						<th>TOTAL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2" class="item-content">
+							<img src="http://placekitten.com/75/75" alt="">
+							<div>
+								<h3>SONY</h3>
+								<p>FE 70-200 mm F2.8 GM OSS</p>
+							</div>
+						</td>
+						<td></td>
+						<td>1</td>
+						<td>$1979.00</td>
+						<td>$1979.00</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="item-content">
+							<img src="http://placekitten.com/75/75" alt="">
+							<div>
+								<h3>SONY</h3>
+								<p>Sonnar T* E 24mm FL8 ZA</p>
+							</div>
+						</td>
+						<td></td>
+						<td>1</td>
+						<td>$1979.00</td>
+						<td>$1979.00</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4"></td>
+						<td>$2968.00</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+
+		<footer>
+			<p>Edit your shopping cart</p>
+			<button type="submit">Choose payment method</button>
+		</footer>
+	</div>
+</body>
+
+</html>
