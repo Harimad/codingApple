@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Font!!</title>
+	<title>Font & Flexbox</title>
 
 	<style>
 		* {
@@ -139,9 +139,31 @@
 			transform: rotate(0.03deg)
 		}
 	</style>
+
+	<!-- nav Flexbox -->
+	<style>
+		.nav-container {
+			display: flex;
+			height: 40px;
+			align-items: center;
+			padding: 10px;
+		}
+
+		.nav-item {
+			margin-right: 10px;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- nav Flexbox -->
+	<nav class="nav-container">
+		<div class="nav-item">Logo</div>
+		<div style="flex-grow: 1;"></div>
+		<div class="nav-item">Products</div>
+		<div class="nav-item">Services</div>
+	</nav>
+
 	<div class="main-background">
 		<h4 class="main-title">Buy Our Shoes!</h4>
 		<p class="main-text">Sit eiusmod eiusmod laborum laboris anim nulla et officia. Laboris est quis anim elit aliqua id
