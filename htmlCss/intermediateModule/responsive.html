@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>responsive homework</title>
+	<style>
+		/* PC Layout */
+		.product-container {
+			width: 80%;
+			max-width: 1000px;
+			margin: auto;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		.item {
+			float: left;
+			width: 25%;
+			text-align: center;
+		}
+
+		/* Tablet Layout */
+		@media screen and (max-width: 1200px) {
+			.product-container {
+				max-width: 600px;
+			}
+
+			.item {
+				width: 50%;
+			}
+
+		}
+
+		/* Mobile Layout */
+		@media screen and (max-width: 768px) {
+			.item {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="product-container">
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+	</div>
+	<div style="float: none; clear: both;"></div>
+</body>
+
+</html>
