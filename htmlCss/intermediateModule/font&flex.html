@@ -5,7 +5,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Font & Flexbox</title>
+	<title>Font & Flexbox & fontAwesome</title>
+	<!-- Font Awesome cdn -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<style>
 		* {
@@ -164,16 +168,37 @@
 		}
 	</style> -->
 	<style>
+		.product-container {
+			width: 80%;
+			max-width: 1000px;
+			margin: 50px auto;
+		}
+
+		.item {
+			float: left;
+			width: 25%;
+			text-align: center;
+			padding: 10px;
+		}
+
 		/* 현재 브라우저 폭이 1200px 이하일 경우 */
 		@media screen and (max-width: 1200px) {
-			.main-title {
-				font-size: 30px;
+			.product-container {
+				max-width: 600px;
+			}
+
+			.item {
+				width: 50%;
 			}
 		}
 
 		@media screen and (max-width: 768px) {
-			.main-title {
-				font-size: 20px;
+			.item {
+				width: 100%;
+			}
+
+			.w-50 {
+				width: 100%;
 			}
 		}
 
@@ -181,6 +206,20 @@
 			.main-title {
 				font-size: 10px;
 			}
+		}
+	</style>
+
+	<!-- Font Awesome  -->
+	<style>
+		.product-container i {
+			background-color: burlywood;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px;
+			padding-top: 24px;
+			box-sizing: border-box;
+			color: white;
+			margin-top: 20px;
 		}
 	</style>
 </head>
@@ -196,6 +235,7 @@
 		<div class="nav-item">Services</div>
 	</nav>
 
+	<!-- Main -->
 	<div class="main-background">
 		<h4 class="main-title">Buy Our Shoes!</h4>
 		<p class="main-text">Sit eiusmod eiusmod laborum laboris anim nulla et officia. Laboris est quis anim elit aliqua id
@@ -206,8 +246,6 @@
 		</p>
 		<button class="main-btn">Buy Now!</button>
 	</div>
-
-
 	<div class="main-description">
 		<h3>How we design our shoes</h3>
 		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
@@ -215,6 +253,34 @@
 			praesentium nemo rerum?</p>
 	</div>
 
+	<!-- Media query -->
+	<div class="product-container">
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+			<i class="fas fa-bars"></i>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+			<i class="fas fa-bars fa-2x"></i>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+			<i class="fas fa-bars fa-3x"></i>
+
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+			<i class="fas fa-bars fa-4x"></i>
+
+		</div>
+		<div style="clear: both; float: none;"></div>
+	</div>
+
+	<!-- Form -->
 	<div class="form-background">
 		<div class="form-white">
 			<form>
@@ -247,7 +313,6 @@
 			</form>
 		</div>
 	</div>
-
 </body>
 
 </html>

@@ -5,7 +5,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Font & Flexbox</title>
+	<title>Self Practice</title>
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<style>
 		* {
@@ -195,6 +199,18 @@
 			}
 		}
 	</style>
+	<style>
+		.product-container i {
+			background-color: burlywood;
+			width: 100px;
+			height: 100px;
+			border-radius: 50px;
+			padding-top: 25px;
+			box-sizing: border-box;
+			color: white;
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 
 <body>
@@ -227,20 +243,24 @@
 	<!-- Media query -->
 	<div class="product-container">
 		<div class="item">
+			<i class="fas fa-shipping-fast fa-3x"></i>
 			<h4>Fast Shipping</h4>
-			<p>lorem ipsum</p>
+			<p>We ship faster than other shops</p>
 		</div>
 		<div class="item">
-			<h4>Fast Shipping</h4>
-			<p>lorem ipsum</p>
+			<i class="fas fa-user fa-3x"></i>
+			<h4>Good Service</h4>
+			<p>Expect a lifelong service</p>
 		</div>
 		<div class="item">
-			<h4>Fast Shipping</h4>
-			<p>lorem ipsum</p>
+			<i class="fas fa-gift fa-3x"></i>
+			<h4>Free Coupons</h4>
+			<p>With new welcome gifts</p>
 		</div>
 		<div class="item">
-			<h4>Fast Shipping</h4>
-			<p>lorem ipsum</p>
+			<i class="fas fa-parachute-box fa-3x"></i>
+			<h4>New Products</h4>
+			<p>See monthly new products</p>
 		</div>
 		<div style="clear: both; float: none;"></div>
 	</div>
