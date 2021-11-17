@@ -222,6 +222,43 @@
 			margin-top: 20px;
 		}
 	</style>
+
+	<!-- Transition Property -->
+	<style>
+		.shop-bg {
+			background-color: #eee;
+			padding: 20px;
+		}
+
+		.shop-container {
+			display: flex;
+			width: 90%;
+			margin: auto;
+		}
+
+		.shop-item {
+			width: 33%;
+			padding: 10px;
+		}
+
+		.shop-item img {
+			width: 100%;
+			display: block;
+		}
+
+		.overlay {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			opacity: 0;
+			transition: all 1s ease-in;
+		}
+
+		.overlay:hover {
+			opacity: 1;
+		}
+	</style>
 </head>
 
 <body>
@@ -254,6 +291,7 @@
 	</div>
 
 	<!-- Media query -->
+	<!-- fontawesome -->
 	<div class="product-container">
 		<div class="item">
 			<h4>Fast Shipping</h4>
@@ -278,6 +316,24 @@
 
 		</div>
 		<div style="clear: both; float: none;"></div>
+	</div>
+
+	<!-- Transition Property -->
+	<div class="shop-bg">
+		<div class="shop-container">
+			<div class="shop-item">
+				<div style="position: relative;">
+					<div class="overlay"></div>
+					<img src="img/product1-1-150x150.jpg" alt="">
+				</div>
+			</div>
+			<div class="shop-item">
+				<img src="img/product2.jpg" alt="">
+			</div>
+			<div class="shop-item">
+				<img src="img/product3-150x150.jpg" alt="">
+			</div>
+		</div>
 	</div>
 
 	<!-- Form -->
