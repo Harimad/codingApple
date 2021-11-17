@@ -153,9 +153,41 @@
 			margin-right: 10px;
 		}
 	</style>
+
+	<!-- View Size -->
+	<!-- <style>
+		.test {
+			font-size: 1rem;
+			width: 50vw;
+			height: 50vh;
+			background: grey;
+		}
+	</style> -->
+	<style>
+		/* 현재 브라우저 폭이 1200px 이하일 경우 */
+		@media screen and (max-width: 1200px) {
+			.main-title {
+				font-size: 30px;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			.main-title {
+				font-size: 20px;
+			}
+		}
+
+		@media screen and (max-width: 576px) {
+			.main-title {
+				font-size: 10px;
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<!-- <div class="test"></div> -->
+
 	<!-- nav Flexbox -->
 	<nav class="nav-container">
 		<div class="nav-item">Logo</div>
