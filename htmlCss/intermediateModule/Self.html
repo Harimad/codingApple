@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Font & Flexbox</title>
+
+	<style>
+		* {
+			margin: 0;
+		}
+
+		div,
+		input,
+		textarea {
+			box-sizing: border-box;
+		}
+
+		.main-background {
+			width: 100%;
+			height: 500px;
+			background-image: url(img/shoes.jpg);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			padding: 1px;
+			text-align: center;
+			position: relative;
+		}
+
+		.main-title {
+			color: white;
+			font-size: 40px;
+			margin-top: 200px;
+		}
+
+		.main-text {
+			margin: 20px 0 20px 0;
+			color: white;
+		}
+
+		.main-btn {
+			margin-top: 20px;
+			padding: 10px 20px 10px 20px;
+			font-size: 20px;
+			background-color: white;
+			border: none;
+			border-radius: 5px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 150px;
+		}
+
+		.main-description {
+			position: relative;
+			top: -40px;
+			margin: auto;
+			width: 600px;
+			bottom: -25%;
+			box-sizing: border-box;
+			max-width: 600px;
+			padding: 20px;
+			background: #eee;
+		}
+
+		.main-description>h3 {
+			margin-bottom: 10px;
+		}
+	</style>
+
+	<style>
+		.form-background {
+			background-color: black;
+			padding: 30px;
+		}
+
+		.form-white {
+			background-color: white;
+			padding: 30px;
+			width: 80%;
+			max-width: 600px;
+			margin: auto;
+		}
+
+		.form-input {
+			width: 100%;
+			padding: 10px;
+			font-size: 20px;
+			border: 1px solid black;
+			border-radius: 5px;
+		}
+
+		.w-100 {
+			width: 100%;
+			padding: 10px;
+		}
+
+		.w-50 {
+			width: 50%;
+			float: left;
+			padding: 10px;
+		}
+
+		.yellow-button {
+			padding: 10px;
+			display: block;
+			margin-left: auto;
+		}
+	</style>
+
+	<!-- 폰트 작업 -->
+	<style>
+		body {
+			font-family: '이쁜폰트1';
+		}
+
+		@font-face {
+			font-family: '이쁜폰트2';
+			src: url(./font/NanumSquareR.woff);
+		}
+
+		@font-face {
+			font-family: '이쁜폰트1';
+			font-weight: 800;
+			src: url(./font/NanumSquareB.woff);
+		}
+
+		/* 폰트 부드럽게 처리하려면 회전 */
+		p,
+		h4,
+		h3,
+		h2,
+		h1,
+		span {
+			transform: rotate(0.03deg)
+		}
+	</style>
+
+	<!-- nav Flexbox -->
+	<style>
+		.nav-container {
+			display: flex;
+			height: 40px;
+			align-items: center;
+			padding: 10px;
+		}
+
+		.nav-item {
+			margin-right: 10px;
+		}
+	</style>
+
+	<style>
+		.product-container {
+			width: 80%;
+			max-width: 1000px;
+			margin: 50px auto;
+		}
+
+		.item {
+			float: left;
+			width: 25%;
+			text-align: center;
+			padding: 10px;
+		}
+
+		/* 현재 브라우저 폭이 1200px 이하일 경우 */
+		@media screen and (max-width: 1200px) {
+			.product-container {
+				max-width: 600px;
+			}
+
+			.item {
+				width: 50%;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			.item {
+				width: 100%;
+			}
+
+			.w-50 {
+				width: 100%;
+			}
+		}
+
+		@media screen and (max-width: 576px) {
+			.main-title {
+				font-size: 10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- nav Flexbox -->
+	<nav class="nav-container">
+		<div class="nav-item">Logo</div>
+		<div style="flex-grow: 1;"></div>
+		<div class="nav-item">Products</div>
+		<div class="nav-item">Services</div>
+	</nav>
+
+	<!-- Main -->
+	<div class="main-background">
+		<h4 class="main-title">Buy Our Shoes!</h4>
+		<p class="main-text">Sit eiusmod eiusmod laborum laboris anim nulla et officia. Laboris est quis anim elit aliqua id
+			exercitation aute
+			aute cillum ipsum labore labore ad. Sit aute consectetur ad laborum in irure qui aliqua amet. Ea mollit voluptate
+			ex laboris Lorem consequat nostrud id Lorem veniam laboris excepteur magna cupidatat. Proident ea ad irure minim
+			esse magna irure incididunt id proident culpa incididunt qui sint.
+		</p>
+		<button class="main-btn">Buy Now!</button>
+	</div>
+	<div class="main-description">
+		<h3>How we design our shoes</h3>
+		<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eos architecto deleniti, voluptate dignissimos
+			sunt voluptates consequuntur aliquam suscipit debitis, tenetur laudantium maiores esse aspernatur magni aut
+			praesentium nemo rerum?</p>
+	</div>
+
+	<!-- Media query -->
+	<div class="product-container">
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div class="item">
+			<h4>Fast Shipping</h4>
+			<p>lorem ipsum</p>
+		</div>
+		<div style="clear: both; float: none;"></div>
+	</div>
+
+	<!-- Form -->
+	<div class="form-background">
+		<div class="form-white">
+			<form>
+				<div class="w-100">
+					<h3>Contact Us</h3>
+					<p>Your Email</p>
+					<input type="email" class="form-input">
+				</div>
+
+				<div class="w-50">
+					<p>First Name</p>
+					<input type="text" class="form-input">
+				</div>
+				<div class="w-50">
+					<p>Last Name</p>
+					<input type="text" class="form-input">
+				</div>
+				<div style="clear: both;"></div>
+
+				<div class="w-100">
+					<p>Message</p>
+					<textarea class="form-input" cols="30" rows="10"></textarea>
+				</div>
+
+				<div>
+					<input type="checkbox" id="sub">
+					<label for="sub">Subscribe</label>
+					<button type="submit" class="yellow-button">SEND</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>
