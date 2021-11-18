@@ -159,6 +159,7 @@
 	</style>
 
 	<style>
+		/* responsive web */
 		.product-container {
 			width: 80%;
 			max-width: 1000px;
@@ -200,6 +201,7 @@
 		}
 	</style>
 	<style>
+		/* fontawesome */
 		.product-container i {
 			background-color: burlywood;
 			width: 100px;
@@ -209,6 +211,51 @@
 			box-sizing: border-box;
 			color: white;
 			margin-bottom: 20px;
+		}
+
+		/* transition property */
+		.shop-bg {
+			background-color: #eee;
+			padding: 20px;
+		}
+
+		.shop-container {
+			display: flex;
+			width: 90%;
+			margin: auto;
+		}
+
+		.shop-item {
+			width: 33%;
+			padding: 10px;
+		}
+
+		.shop-item-box {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.shop-item img {
+			width: 100%;
+			display: block;
+		}
+
+		.overlay {
+			color: white;
+			font-size: 2rem;
+			padding: 1rem;
+
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			opacity: 1;
+			transition: all 0.3s ease-out;
+			top: 100%;
+		}
+
+		.shop-item:hover .overlay {
+			top: 50%;
 		}
 	</style>
 </head>
@@ -263,6 +310,39 @@
 			<p>See monthly new products</p>
 		</div>
 		<div style="clear: both; float: none;"></div>
+	</div>
+
+	<!-- Transition Property -->
+	<div class="shop-bg">
+		<div class="shop-container">
+			<div class="shop-item">
+				<div class="shop-item-box">
+					<div class="overlay">
+						<h3>$60</h3>
+						<p>New Item!</p>
+					</div>
+					<img src="img/product1-1-150x150.jpg" alt="">
+				</div>
+			</div>
+			<div class="shop-item">
+				<div class="shop-item-box">
+					<div class="overlay">
+						<h3>$60</h3>
+						<p>New Item!</p>
+					</div>
+					<img src="img/product2.jpg" alt="">
+				</div>
+			</div>
+			<div class="shop-item">
+				<div class="shop-item-box">
+					<div class="overlay">
+						<h3>$60</h3>
+						<p>New Item!</p>
+					</div>
+					<img src="img/product3-150x150.jpg" alt="">
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Form -->
