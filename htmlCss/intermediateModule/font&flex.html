@@ -78,7 +78,7 @@
 
 	<style>
 		.form-background {
-			background-color: black;
+			background-color: rgb(193, 163, 163);
 			padding: 30px;
 		}
 
@@ -246,17 +246,24 @@
 			display: block;
 		}
 
-		.overlay {
+		.overlay-wrap {
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			background: rgba(0, 0, 0, 0.5);
-			opacity: 0;
-			transition: all 1s ease-in;
+			overflow: hidden;
 		}
 
-		.overlay:hover {
+		.overlay {
+			width: 100%;
+			height: 100%;
+			background: rgba(154, 128, 128, 0.5);
 			opacity: 1;
+			transition: all 0.3s ease-in;
+			margin-top: 90%;
+		}
+
+		.overlay-wrap:hover .overlay {
+			margin-top: 50%;
 		}
 	</style>
 </head>
@@ -323,15 +330,27 @@
 		<div class="shop-container">
 			<div class="shop-item">
 				<div style="position: relative;">
-					<div class="overlay"></div>
+					<div class="overlay-wrap">
+						<div class="overlay"></div>
+					</div>
 					<img src="img/product1-1-150x150.jpg" alt="">
 				</div>
 			</div>
 			<div class="shop-item">
-				<img src="img/product2.jpg" alt="">
+				<div style="position: relative;">
+					<div class="overlay-wrap">
+						<div class="overlay"></div>
+					</div>
+					<img src="img/product2.jpg" alt="">
+				</div>
 			</div>
 			<div class="shop-item">
-				<img src="img/product3-150x150.jpg" alt="">
+				<div style="position: relative;">
+					<div class="overlay-wrap">
+						<div class="overlay"></div>
+					</div>
+					<img src="img/product3-150x150.jpg" alt="">
+				</div>
 			</div>
 		</div>
 	</div>
