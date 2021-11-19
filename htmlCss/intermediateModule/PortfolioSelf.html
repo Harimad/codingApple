@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio1_self</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		* {
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			width: 100%;
+		}
+
+		.container {
+			height: max-content;
+		}
+
+		.header {
+			height: 40%;
+			padding: 100px 100px 0 100px;
+			display: flex;
+			justify-content: space-between;
+			background: rgb(183, 242, 255);
+			background: linear-gradient(180deg, rgba(183, 242, 255, 1) 0%, rgba(151, 223, 255, 1) 45%, rgba(64, 207, 237, 1) 78%);
+		}
+
+		.header-text {
+			width: 50%;
+			padding-bottom: 5rem;
+		}
+
+		.header-text>h1,
+		.header-text p {
+			margin-bottom: 20px;
+			color: white;
+		}
+
+		.header-text button,
+		.content-box button {
+			padding: 15px;
+			font-size: 20px;
+			font-weight: 700;
+			border: none;
+			background-color: #b8b8b8;
+			color: white;
+			border-radius: 10px;
+			transition: all 0.3s ease-in;
+		}
+
+		.header-text button:hover,
+		.content-box button:hover {
+			color: white;
+			background-color: turquoise;
+			transform: scale(1.2);
+		}
+
+		.header-img {
+			width: 40%;
+			height: 50%;
+			align-self: end;
+			transition: all 0.4s ease-out;
+		}
+
+		.header-img:hover {
+			transform: rotate(0.5turn);
+		}
+
+		.content-box {
+			height: 300px;
+			/* background-color: #eee; */
+		}
+
+		.content-text {
+			width: 40%;
+			margin: auto;
+			text-align: center;
+			padding-top: 50px;
+		}
+
+		.content-text h2,
+		.content-text p {
+			padding-bottom: 20px;
+		}
+
+		.content-service {
+			height: 350px;
+			background-color: #b1f1ff;
+			text-align: center;
+		}
+
+		.service-box {
+			width: 70%;
+			margin: auto;
+			padding-top: 40px;
+		}
+
+		.service-title {
+			margin-bottom: 40px;
+		}
+
+		.icons-box {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.icon i {
+			width: 100px;
+			height: 100px;
+			background-color: white;
+			border-radius: 50%;
+			padding: 25px;
+			margin-bottom: 1rem;
+			transition: all 0.3s ease-in;
+		}
+
+		.icon:hover i {
+			transform: rotate(30deg) scale(1.2);
+			color: red;
+		}
+
+		.section {
+			background-color: #b3e5fb;
+			height: 40%;
+		}
+
+		.section-box {
+			width: 80%;
+			margin: auto;
+		}
+
+		.section-title {
+			padding: 40px;
+			text-align: center;
+		}
+
+		.section-cards {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.section-item {
+			color: white;
+			padding: 50px;
+			width: 50%;
+			height: 300px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: all 0.3s ease-in;
+		}
+
+		.section-item:hover {
+			transform: scale(0.8);
+		}
+
+		.item1 {
+			background-image: url('img/portfolio-1-150x150.jpg');
+		}
+
+
+		.item2 {
+			background-image: url(img/portfolio-2-150x150.jpg);
+		}
+
+		.item3 {
+			background-image: url(img/portfolio-3-150x150.jpg);
+		}
+
+		.item4 {
+			background-image: url(img/portfolio-4-150x150.jpg);
+		}
+
+		footer {
+			height: 300px;
+			text-align: center;
+		}
+
+		.footer-box {
+			width: 30%;
+			margin: auto;
+		}
+
+		.sns {
+			display: flex;
+			justify-content: space-around;
+			padding: 45px 0 40px 0;
+		}
+
+		.sns-box {
+			padding: 20px;
+		}
+
+		.sns-box i {
+			width: 100px;
+			height: 100px;
+			background-color: #b1f1ff;
+			border-radius: 50%;
+			font-size: 50px;
+			padding: 25px;
+			color: white;
+			transition: all 0.8s ease-in-out;
+		}
+
+		.sns-box:hover i {
+			transform: rotate(360deg) scale(1.2);
+			color: #7f7f7f;
+		}
+
+		@media screen and (max-width: 768px) {
+			.header {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.header-text {
+				width: 85%;
+			}
+
+			.header-img {
+				align-self: auto;
+				width: 50%;
+			}
+
+			.section-item {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="header-text">
+				<h1>Landing Page for Apps</h1>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At alias, ipsum debitis ratione suscipit, quisquam
+					iste officiis exercitationem voluptatem rerum aspernatur explicabo. Ex, sit. Asperiores possimus quam sed
+					ratione similique.</p>
+				<button>Show More</button>
+			</div>
+			<img class="header-img" src="img/iphone-150x150.png" alt="">
+		</div>
+
+		<div class="content-box">
+			<div class="content-text">
+				<h2>It is the perfect theme for your next Project!</h2>
+				<p>Ad amet dolore laborum consectetur tempor tempor amet</p>
+				<button>Show Portfolio</button>
+			</div>
+		</div>
+
+		<div class="content-service">
+			<div class="service-box">
+				<div class="service-title">
+					<p>services</p>
+					<h2>What We Offer</h2>
+				</div>
+				<div class="icons-box">
+					<div class="icon">
+						<i class="fas fa-mobile-alt fa-3x"></i>
+						<h2>Responsive</h2>
+						<p>Lorem ipsum I love coding</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-seedling fa-3x"></i>
+						<h2>Resonable</h2>
+						<p>Lorem ipsum I love coding</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-heart fa-3x"></i>
+						<h2>Reliable</h2>
+						<p>Lorem ipsum I love coding</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-shipping-fast fa-3x"></i>
+						<h2>Fast</h2>
+						<p>Lorem ipsum I love coding</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-box">
+				<div class="section-title">
+					<p>Portfolio</p>
+					<h2>What we can DO</h2>
+				</div>
+				<div class="section-cards">
+					<div class="section-item item1">
+						<h2>Stationary</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					</div>
+					<div class="section-item item2">
+						<h2>Stationary</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					</div>
+					<div class="section-item item3">
+						<h2>Stationary</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					</div>
+					<div class="section-item item4">
+						<h2>Stationary</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="footer-box">
+				<div class="sns">
+					<div class="sns-box">
+						<i class="fab fa-google"></i>
+					</div>
+					<div class="sns-box">
+						<i class="fab fa-twitter-square"></i>
+					</div>
+					<div class="sns-box">
+						<i class="fab fa-instagram"></i>
+					</div>
+				</div>
+				<p>CodingApple</p>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>
