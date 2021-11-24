@@ -5,11 +5,137 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>trnasform & animation</title>
+	<style>
+		body {
+			margin: 0;
+			height: 100vh;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- homework 1 흔들흔들 -->
+	<div class="box">
+		<button class="btn">흔들버튼</button>
+	</div>
+	<style>
+		.btn {
+			font-size: 24px;
+			padding: 20px;
+			background: #87ceea;
+			color: white;
+			border: none;
+			border-radius: 5px;
+		}
 
+		@keyframes 흔들흔들 {
+			0% {
+				transform: rotate(-20deg);
+			}
+
+			25% {
+				transform: rotate(20deg);
+
+			}
+
+			50% {
+				transform: rotate(-20deg);
+
+			}
+
+			100% {
+				transform: rotate(0deg);
+
+			}
+		}
+
+		.btn:hover {
+			animation-name: 흔들흔들;
+			animation-duration: 1s;
+		}
+	</style>
+
+	<!-- homework 2 - 마우스 올리면 회전하는 + 기호 만들기 -->
+	<div class="plus-box">
+		<p><span class="plus">+</span></p>
+	</div>
+	<style>
+		.plus-box {
+			height: 100px;
+			width: 100px;
+			background: cyan;
+			text-align: center;
+			line-height: 100px;
+		}
+
+		.plus {
+			display: inline-block;
+			font-size: 36px;
+		}
+
+		@keyframes plus {
+			0% {
+				transform: rotate(-40deg);
+			}
+
+			100% {
+				transform: rotate(40deg) scale(1.3);
+			}
+		}
+
+		.plus:hover {
+			animation-name: plus;
+			animation-duration: 1s;
+		}
+	</style>
+
+	<!-- homework 3 나타나는 왼쪽 메뉴bar 만들기 -->
+	<div class="sidebar">
+		<p class="sidebar-menu">Menu</p>
+		<p class="sidebar-item">Item</p>
+	</div>
+
+	<style>
+		.sidebar {
+			height: 100%;
+			width: 200px;
+			background: black;
+			color: white;
+			border-radius: 5px;
+
+			position: relative;
+			transition: all 0.3s ease-in;
+			transform: translateX(-50px);
+		}
+
+		.sidebar-menu {
+			text-align: right;
+		}
+
+		.sidebar:hover {
+			transform: translateX(0);
+		}
+
+		.sidebar:hover .sidebar-menu {
+			text-align: center;
+		}
+
+		.sidebar:hover .sidebar-item {
+			animation: textMove 1s;
+			transform: translateX(40%);
+		}
+
+		@keyframes textMove {
+			50% {
+				transform: translateX(70%) skew(-30deg);
+			}
+
+			100% {
+				transform: translateX(40%) skew(0);
+			}
+		}
+	</style>
 </body>
 
 </html>
