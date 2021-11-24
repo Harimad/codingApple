@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .navbar ul {
   width: 100%;
 }
@@ -29,4 +30,14 @@
 
 .btn-green {
   background: green;
-}/*# sourceMappingURL=style2.css.map */
+}
+
+.btn-green {
+  font-size: 16px;
+  padding: 10px;
+  background: #229f72;
+}
+
+@use와 언더바 파일
+
+@use "reset.scss";/*# sourceMappingURL=style2.css.map */
