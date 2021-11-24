@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		/* transform 관련 CSS 속성들 */
+
+		.box-example {
+			transform: rotate(10deg);
+			transform: translate(10px, 20px);
+			transform: scale(2);
+			transform: skew(30deg);
+			transform: rotate(10deg) translateX(30px);
+		}
+
+		/* 복잡한 애니메이션 구현법 */
+		@keyframes 움찔움찔 {
+			0% {
+				transform: translateX(0px);
+			}
+
+			50% {
+				transform: translateX(-20px);
+			}
+
+			100% {
+				transform: translateX(20px);
+			}
+		}
+
+		.box:hover {
+			animation-name: 움찔움찔;
+			animation-duration: 1s;
+			/*베지어 주기*/
+			animation-timing-function: linear;
+			/*시작 전 딜레이*/
+			animation-delay: 1s;
+			/*몇회 반복할것인가*/
+			animation-iteration-count: 3;
+			/*애니메이션을 멈추고 싶은 경우 자바스크립트로 이거 조정*/
+			animation-play-state: paused;
+			/*애니메이션 끝난 후에 원상복구 하지말고 정지*/
+			animation-fill-mode: forwards;
+		}
+		}
+	</style>
+</head>
+
+<body>
+
+</body>
+
+</html>
