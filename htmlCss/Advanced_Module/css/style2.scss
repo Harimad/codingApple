@@ -1,0 +1,52 @@
+.navbar {
+  ul {
+    width: 100%;
+  }
+  li {
+    color: black;
+  }
+}
+
+.navbar ul {
+  width: 100%;
+}
+
+.navbar li {
+  color: black;
+}
+
+// 이건 추천 안함
+div.container {
+  > div {
+    p.first {
+      > span {
+      }
+    }
+  }
+}
+
+// 귀찮아서 안씀
+.navbar {
+  :hover {
+    color: blue;
+  }
+}
+
+.navbar {
+  &:hover {
+    color: blue;
+  }
+}
+
+// class를 확장하는 @extend
+
+.btn {
+  font-size: 16px;
+  padding: 10px;
+  background: grey;
+}
+
+.btn-green {
+  @extend .btn;
+  background: green;
+}

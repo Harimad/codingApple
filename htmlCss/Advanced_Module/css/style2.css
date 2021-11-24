@@ -1,0 +1,32 @@
+.navbar ul {
+  width: 100%;
+}
+.navbar li {
+  color: black;
+}
+
+.navbar ul {
+  width: 100%;
+}
+
+.navbar li {
+  color: black;
+}
+
+.navbar :hover {
+  color: blue;
+}
+
+.navbar:hover {
+  color: blue;
+}
+
+.btn, .btn-green {
+  font-size: 16px;
+  padding: 10px;
+  background: grey;
+}
+
+.btn-green {
+  background: green;
+}/*# sourceMappingURL=style2.css.map */
