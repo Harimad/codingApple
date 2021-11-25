@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<style>
+		.grid-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-rows: 100px 100px 100px;
+			grid-gap: 10px;
+		}
+
+		.grid-container div {
+			border: 1px solid springgreen;
+		}
+
+		.grid-nav {
+			grid-column: 1 / 5;
+		}
+
+		.grid-sidebar {
+			grid-row: 2 / 4;
+		}
+	</style>
+
+	<div class="grid-container">
+		<div class="grid-nav">Header</div>
+		<div class="grid-sidebar">Sidebar</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<br><br><br>
+	<hr>
+	<br><br><br>
+
+	<div class="grid-container2">
+		<div class="grid-nav2">Header2</div>
+		<div class="grid-sidebar2">Sidebar2</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<style>
+		.grid-container2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-rows: 100px 100px 100px;
+			grid-gap: 10px;
+			grid-template-areas:
+				"헤더 헤더 헤더 헤더"
+				"사이드 사이드 . ."
+				"사이드 사이드 . .";
+		}
+
+		.grid-container2 div {
+			border: 1px solid springgreen;
+		}
+
+		.grid-nav2 {
+			grid-area: 헤더;
+		}
+
+		.grid-sidebar2 {
+			grid-area: 사이드;
+		}
+	</style>
+</body>
+
+</html>
