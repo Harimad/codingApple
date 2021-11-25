@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+}
+div {
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  width: 100%;
+}
+
+.sidebar {
+  width: 150px;
+  height: 100%;
+  background: #484bb3;
+  position: fixed;
+  color: white;
+  z-index: 1;
+  div {
+    margin: 12px 0 0 12px;
+  }
+
+  transition: all 0.3s ease-in;
+  transform: translateX(-100px);
+
+  i {
+    transition: all 0.3s ease-in;
+    transform: translateX(100px);
+  }
+  &:hover {
+    transform: translateX(0px);
+    i {
+      transform: translateX(0px);
+    }
+  }
+}
+
+.badge {
+  top: -15px;
+  left: 35px;
+}
+
+.input-animation {
+  width: 150px;
+  transition: all 0.8s ease-in;
+  &:focus {
+    width: 400px;
+  }
+}

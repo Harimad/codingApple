@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+}
+
+.sidebar {
+  width: 150px;
+  height: 100%;
+  background: #484bb3;
+  position: fixed;
+  color: white;
+  z-index: 1;
+  transition: all 0.3s ease-in;
+  transform: translateX(-100px);
+}
+.sidebar div {
+  margin: 12px 0 0 12px;
+}
+.sidebar i {
+  transition: all 0.3s ease-in;
+  transform: translateX(100px);
+}
+.sidebar:hover {
+  transform: translateX(0px);
+}
+.sidebar:hover i {
+  transform: translateX(0px);
+}
+
+.badge {
+  top: -15px;
+  left: 35px;
+}
+
+.input-animation {
+  width: 150px;
+  transition: all 0.8s ease-in;
+}
+.input-animation:focus {
+  width: 400px;
+}/*# sourceMappingURL=style.css.map */
