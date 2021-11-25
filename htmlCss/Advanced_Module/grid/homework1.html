@@ -10,14 +10,12 @@
 		.grid-container {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
-
-			height: 300px;
-			grid-template-rows: 1fr 1fr 1fr;
+			grid-template-rows: 100px 100px 100px;
 			grid-gap: 10px;
 			grid-template-areas:
 				"네비 네비 네비 네비"
-				"사이드바 . . ."
-				"사이드바 . . .";
+				"사이드바 내용 내용 내용"
+				"사이드바 내용 내용 내용";
 		}
 
 		.grid-container div {
@@ -32,17 +30,19 @@
 			grid-area: 사이드바;
 		}
 
+		.grid-content {
+			grid-area: 내용;
+		}
+
 		@media screen and (max-width: 768px) {
 
 			.grid-container {
-				display: flex;
-				flex-direction: column;
+				grid-template-areas:
+					"네비 네비 네비 네비"
+					"사이드바 사이드바 사이드바 사이드바"
+					"내용 내용 내용 내용";
 			}
 
-			.grid-container div {
-				width: 100%;
-				height: 100px;
-			}
 		}
 	</style>
 </head>
@@ -51,12 +51,7 @@
 	<div class="grid-container">
 		<div class="grid-nav"></div>
 		<div class="grid-sidebar"></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
-		<div></div>
+		<div class="grid-content"></div>
 	</div>
 </body>
 
