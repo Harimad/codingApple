@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid homework</title>
+	<style>
+		.grid-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			height: 300px;
+			grid-template-rows: 1fr 1fr 1fr;
+			grid-gap: 10px;
+			grid-template-areas:
+				"네비 네비 네비 네비"
+				"사이드바 . . ."
+				"사이드바 . . .";
+		}
+
+		.grid-container div {
+			border: 1px solid palegreen;
+		}
+
+		.grid-nav {
+			grid-area: 네비;
+		}
+
+		.grid-sidebar {
+			grid-area: 사이드바;
+		}
+
+		@media screen and (max-width: 768px) {
+
+			.grid-container {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.grid-container div {
+				width: 100%;
+				height: 100px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid-container">
+		<div class="grid-nav"></div>
+		<div class="grid-sidebar"></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+
+</html>
