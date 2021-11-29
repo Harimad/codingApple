@@ -21,7 +21,16 @@
 	<div class="black-bg">
 		<div class="white-bg">
 			<p>아이디를 입력하세요.</p>
-			<button class="btn btn-outline-danger btnClose">닫기</button>
+			<form action="login.php">
+				<div class="form-group">
+					<input type="email" class="form-control input-email" placeholder="Email" id="email">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-primary">전송</button>
+				<button class="btn btn-outline-danger btnClose">닫기</button>
+			</form>
 		</div>
 	</div>
 
@@ -52,20 +61,15 @@
 		</div>
 	</div>
 
-	<input type="text" class="test-input">
-
 	<script>
-
-		// document.querySelector('.btnLogIn').addEventListener('click', () => {
-		// 	if (document.querySelector('.test-input').value === '안녕') {
-		// 		$('.black-bg').fadeIn();
-		// 	}
-		// })
-		// 위와 동일함
-		$('.btnLogIn').on('click', () => {
-			if ($('.test-input').val() == '안녕') {
-				$('.black-bg').fadeIn();
+		$('form').on('submit', (e) => {
+			if ($('.input-email').val() === '') {
+				e.preventDefault();
 			}
+		})
+
+		$('.btnLogIn').on('click', () => {
+			$('.black-bg').fadeIn();
 		})
 
 		$('.btnClose').on('click', () => {
