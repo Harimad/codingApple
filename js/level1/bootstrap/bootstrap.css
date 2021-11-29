@@ -23,6 +23,13 @@ a {
   padding: 20px;
 }
 
+.email-alert {
+  display: none;
+}
+.password-alert {
+  display: none;
+}
+
 .nav-menu {
   display: flex;
   justify-content: space-between;
