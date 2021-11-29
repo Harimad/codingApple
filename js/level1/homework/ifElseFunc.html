@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>if/else,function Homework</title>
+</head>
+
+<body>
+	<script>
+		// 문제1
+		function 삼의배수게임(num) {
+			if (num % 9 === 0) {
+				console.log('박수x2')
+			} else if (num % 3 === 0) {
+				console.log('박수')
+			} else {
+				console.log('통과')
+			}
+		}
+
+		// 삼의배수게임(6)
+		// 삼의배수게임(11)
+		// 삼의배수게임(18)
+
+		// 문제2
+		function 삼육구게임(num) {
+			if (num % 10 === 3 || num % 10 === 6 || num % 10 === 9) {
+				console.log('박수')
+			} else {
+				console.log('통과')
+			}
+		}
+		삼육구게임(113)
+		삼육구게임(226)
+		삼육구게임(339)
+		삼육구게임(444)
+		삼육구게임(555)
+	</script>
+</body>
+
+</html>
