@@ -17,6 +17,7 @@
 </head>
 
 <body>
+	<!-- Modal -->
 	<div class="black-bg">
 		<div class="white-bg">
 			<p>아이디를 입력하세요.</p>
@@ -24,10 +25,27 @@
 		</div>
 	</div>
 
+	<!-- Nav -->
+	<div class="nav-menu">
+		<h3>JY Studio</h3>
+		<h4><a href="#" class="nav-link">Products</a></h4>
+	</div>
 
+	<!-- Modal2 -->
+	<div class="list-group nav-sub">
+		<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+			The current link item
+		</a>
+		<a href="#" class="list-group-item list-group-item-action">Shirt</a>
+		<a href="#" class="list-group-item list-group-item-action">Outer</a>
+		<a href="#" class="list-group-item list-group-item-action">Inner Wear</a>
+		<a class="list-group-item list-group-item-action disabled">Shoes</a>
+	</div>
+
+	<!-- Jumbotron -->
 	<div class="p-5 mb-4 bg-light rounded-3">
 		<div class="container-fluid py-5">
-			<h1 class="display-5 fw-bold">Painting Shop</h1>
+			<h1 class="display-5 fw-bold">P&P Shop</h1>
 			<p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous
 				versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
 			<button class="btn btn-primary btn-lg btnLogIn" type="button">Log In</button>
@@ -40,6 +58,10 @@
 		})
 		$('.btnClose').on('click', () => {
 			$('.black-bg').fadeOut();
+		})
+
+		$('.nav-link').on('click', () => {
+			$('.nav-sub').slideToggle();
 		})
 	</script>
 	<!-- Option 1: Bootstrap Bundle with Popper -->
