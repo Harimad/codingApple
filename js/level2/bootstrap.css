@@ -55,3 +55,32 @@ a {
 .nav-sub {
   display: none;
 }
+.slide-container {
+  width: 300vw;
+  transition: transform 1s;
+}
+.slide-box {
+  width: 100vw;
+  height: 300px;
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}
+
+.control-box {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+.slide-next {
+  position: absolute;
+  top: 45%;
+  right: 0;
+}
+.slide-prev {
+  position: absolute;
+  top: 45%;
+  left: 0;
+}

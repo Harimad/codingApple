@@ -76,6 +76,32 @@
 		</div>
 	</div>
 
+	<!-- Carousel(이미지슬라이드) -->
+	<h4 class="my-4 text-center">ShowCase</h4>
+
+	<div style="overflow: hidden; position:relative">
+		<div class="slide-container">
+			<div class="slide-box">
+				<img src="http://placekitten.com/150/150" alt="">
+			</div>
+			<div class="slide-box">
+				<img src="http://placekitten.com/151/151" alt="">
+			</div>
+			<div class="slide-box">
+				<img src="http://placekitten.com/152/152" alt="">
+			</div>
+		</div>
+
+		<button class="slide-next">Next</button>
+		<button class="slide-prev">Prev</button>
+	</div>
+
+	<button class="slide-1">1</button>
+	<button class="slide-2">2</button>
+	<button class="slide-3">3</button>
+
+	<div class="my-5"></div>
+
 	<script>
 		$('form').on('submit', (e) => {
 			var email = $('.input-email').val();
@@ -108,6 +134,38 @@
 		$('.nav-link').on('click', () => {
 			$('.nav-sub').slideToggle();
 		});
+
+		// Carousel 버튼
+		$('.slide-1').click(() => {
+			$('.slide-container').css('transform', 'translateX(0)');
+		})
+		$('.slide-2').click(() => {
+			$('.slide-container').css('transform', 'translateX(-100vw)');
+		})
+		$('.slide-3').click(() => {
+			$('.slide-container').css('transform', 'translateX(-200vw)');
+		})
+
+		// Carousel 안의 슬라이드 버튼
+		var nowImg = 1;
+		var imgCount = document.querySelector('.slide-container').children.length;
+
+		$('.slide-next').click(() => {
+			if (nowImg < imgCount) { //1 < 3 (1,2 : 2번)
+				$('.slide-container').css('transform', `translateX( ${-nowImg * 100}vw )`);
+				nowImg++;
+			}
+		})
+
+		$('.slide-prev').click(() => {
+			if (nowImg > 1) { //4번-> X:-200px, 3번 -> X:-100px, 2번 -> X:0px
+				$('.slide-container').css('transform', `translateX( ${(nowImg - 2) * -100}vw )`);
+				nowImg--;
+			}
+		})
+
+
+
 	</script>
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
