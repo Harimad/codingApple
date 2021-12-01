@@ -3,7 +3,6 @@
 }
 a {
   text-decoration: none;
-  color: black;
 }
 
 .left-menu {
@@ -50,6 +49,18 @@ a {
   justify-content: space-between;
   padding: 15px;
   align-items: center;
+  background-color: transparent;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  color: burlywood;
+  transition: all 0.5s ease-in;
+  font-size: 1.5rem;
+}
+.nav-black {
+  background: black;
+  color: white;
+  font-size: 1.2rem;
 }
 
 .nav-sub {

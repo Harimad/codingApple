@@ -43,8 +43,8 @@
 
 	<!-- Nav -->
 	<div class="nav-menu">
-		<h3>JY Studio</h3>
-		<h4><a href="#" class="nav-link">Products</a></h4>
+		<p>JY Studio</p>
+		<p><a href="#" class="nav-link">Products</a></p>
 	</div>
 
 	<!-- Modal2 -->
@@ -103,6 +103,17 @@
 	<div class="my-5"></div>
 
 	<script>
+		// navbar 스크롤바를 내리면 클래스 붙이기
+		$(window).on('scroll', () => {
+			if ($(window).scrollTop() > 100) {
+				$('.nav-menu').addClass('nav-black');
+			} else {
+				$('.nav-menu').removeClass('nav-black');
+			}
+
+		})
+
+		// 이메일 검사
 		$('form').on('submit', (e) => {
 			var email = $('.input-email').val();
 			if (/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zAA-Z]{2,3}$/.test(email) == false || email == '') {
@@ -110,7 +121,7 @@
 				$('.email-alert').show();
 			}
 		});
-
+		// 비밀번호 검사
 		$('form').on('submit', (e) => {
 			var password = $('.input-password').val();
 			if (/[A-Z]+/.test(password) == false) {
