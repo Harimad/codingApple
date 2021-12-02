@@ -85,6 +85,25 @@
 		</div>
 	</div>
 
+	<script>
+		// 이벤트 버블링
+
+		// e.target; //지금 실제로 클릭한 요소
+		// e.currentTarget; //지금 이벤트리스너가 달린 곳
+		// $(this); //위와 같음
+		// e.preventDefault(); //기본동작 막기
+
+		$('.black-bg').click((e) => {
+			// console.log(e.target);
+			// console.log(e.currentTarget);
+
+			// 만약, 지금 실제로 클릭한게 검은배경일 때만!!
+			if (e.target == e.currentTarget) {
+				$('.black-bg').hide();
+			}
+		})
+	</script>
+
 	<!-- Nav -->
 	<div class="nav-menu">
 		<p>JY Studio</p>
