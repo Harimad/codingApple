@@ -12,8 +12,52 @@
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="bootstrap.css" />
+	<link rel="stylesheet" href="style.css" />
 	<title>Bootstrap-Modal</title>
+	<style>
+		/* Tap */
+		ul.list {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			border-bottom: 1px solid #ccc;
+		}
+
+		ul.list::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		.tab-button {
+			display: block;
+			padding: 10px 20px 10px 20px;
+			float: left;
+			margin-right: -1px;
+			margin-bottom: -1px;
+			color: grey;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.active {
+			border-top: 2px solid orange;
+			border-right: 1px solid #ccc;
+			border-bottom: 1px solid white;
+			border-left: 1px solid #ccc;
+			color: black;
+			margin-top: -2px;
+		}
+
+		.tab-content {
+			display: none;
+			padding: 10px;
+		}
+
+		.show {
+			display: block;
+		}
+	</style>
 </head>
 
 <body>
@@ -101,6 +145,27 @@
 	<button class="slide-3">3</button>
 
 	<div class="my-5"></div>
+
+	<!-- Tap -->
+	<div class="container mt-5">
+		<ul class="list">
+			<li class="tab-button">Products</li>
+			<li class="tab-button active">Information</li>
+			<li class="tab-button">Shipping</li>
+		</ul>
+
+		<div class="tab-content">
+			<p>상품설명입니다. Product</p>
+		</div>
+		<div class="tab-content show">
+			<p>상품정보입니다. Info</p>
+		</div>
+		<div class="tab-content">
+			<p>배송정보입니다. Shipping</p>
+		</div>
+	</div>
+
+	<script src="tap.js"></script>
 
 	<script>
 		// navbar 스크롤바를 내리면 클래스 붙이기
