@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>position : Sticky</title>
+	<style>
+		.grey {
+			background: lightgrey;
+			height: 2000px;
+			margin-top: 500px;
+		}
+
+		.image {
+			float: right;
+			width: 400px;
+			position: sticky;
+			top: 100px;
+		}
+
+		.text {
+			float: left;
+			width: 400px;
+		}
+	</style>
+</head>
+
+<body style="background: grey; height: 4500px;">
+	<div class="grey">
+		<div class="image">
+			<img src="img/appletv-150x150.jpg" width="100%">
+		</div>
+		<div style="clear: both;"></div>
+		<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cupiditate ratione soluta neque
+			tenetur aperiam delectus natus dicta, quam praesentium odio excepturi voluptatem porro. Aspernatur quae quaerat
+			suscipit cupiditate libero?</div>
+		<div style="clear: both;"></div>
+
+		<div class="text" style="margin-top: 300px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cupiditate
+			ratione soluta neque
+			tenetur aperiam delectus natus dicta, quam praesentium odio excepturi voluptatem porro. Aspernatur quae quaerat
+			suscipit cupiditate libero?</div>
+		<div style="clear: both;"></div>
+
+	</div>
+</body>
+
+</html>
