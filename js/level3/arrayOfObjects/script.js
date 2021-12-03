@@ -15,3 +15,17 @@ content3.children[0].textContent = products[2].title;
 content1.children[1].textContent = products[0].price;
 content2.children[1].textContent = products[1].price;
 content3.children[1].textContent = products[2].price;
+
+// 가격순정렬
+$('.priceSort').click(() => {
+	products.sort(function (a, b) {
+    return a.price - b.price;
+	})
+	content1.children[0].textContent = products[0].title;
+	content2.children[0].textContent = products[1].title;
+	content3.children[0].textContent = products[2].title;
+
+	content1.children[1].textContent = products[0].price;
+	content2.children[1].textContent = products[1].price;
+	content3.children[1].textContent = products[2].price;
+});
