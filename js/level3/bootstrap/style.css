@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+.left-menu {
+  width: 150px;
+  background: black;
+  color: white;
+  height: 100%;
+  position: fixed;
+  z-index: 5;
+  margin-left: -150px;
+}
+
+.black-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  display: block;
+  transition: all 1s;
+  transform: translateY(-100%);
+}
+.slide-down {
+  transform: translateY(0px);
+}
+
+.white-bg {
+  width: 60%;
+  background: white;
+  margin: 100px auto;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.email-alert {
+  display: none;
+}
+.password-alert {
+  display: none;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  color: burlywood;
+  transition: all 0.5s ease-in;
+  font-size: 1.3rem;
+}
+.nav-black {
+  background: black;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.nav-sub {
+  display: none;
+}
+
+.slide-container {
+  width: 300vw;
+  /* transition: transform 0.3s; */
+}
+.transforming {
+  transition: transform 0.5s;
+}
+.slide-box {
+  width: 100vw;
+  height: 400px;
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}
+
+.control-box {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+.slide-next {
+  position: absolute;
+  top: 45%;
+  right: 0;
+}
+.slide-prev {
+  position: absolute;
+  top: 45%;
+  left: 0;
+}
+
+/* Tap */
+ul.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.list::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.tab-button {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  float: left;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
+  border-top: 2px solid orange;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  border-left: 1px solid #ccc;
+  color: black;
+  margin-top: -2px;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+
+.show {
+  display: block;
+}
