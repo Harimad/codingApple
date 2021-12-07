@@ -16,17 +16,21 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
-		var h1Tag = document.querySelector('h1');
-		var text = document.querySelector('h1').innerHTML;
+		var h1태그 = document.querySelector('h1');
+		var 원래글씨 = document.querySelector('h1').innerHTML;
 
 		$('button').click(() => {
-			$('h1').html('');
-			for (let i = 0; i < text.length; i++) {
+			애니메이션(h1태그, 원래글씨);
+		});
+
+		function 애니메이션(태그, 글씨) {
+			$(태그).html('');
+			for (let i = 0; i < 글씨.length; i++) {
 				setTimeout(() => {
-					h1Tag.innerHTML += text[i];
+					태그.innerHTML += 글씨[i];
 				}, 500 * i)
 			}
-		});
+		}
 	</script>
 </body>
 
