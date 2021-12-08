@@ -1,0 +1,21 @@
+.card-box {
+  width: 70%;
+}
+
+.card {
+  margin-right: 1rem;
+}
+
+.shop-box {
+  width: 30%;
+}
+
+.show-item {
+  background: #eee;
+}
+.show-item p {
+  padding: 30px;
+}
+
+.card-footer button {
+}
