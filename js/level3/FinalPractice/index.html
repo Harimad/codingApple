@@ -9,8 +9,19 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<!-- jquery - ui -->
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+		integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+
 	<title>Final practice</title>
 </head>
+<!-- 영수증 -->
+<div class="canvas-box">
+	<canvas id="canvas" width="600" height="600"></canvas>
+</div>
 
 <body style="height: 3000px;">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -42,8 +53,8 @@
 	</nav>
 
 	<div class="container my-5">
-		<form class="d-flex">
-			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		<form class="d-flex formBox">
+			<input class="form-control me-2 search-item" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
 	</div>
@@ -60,11 +71,12 @@
 				<div class="show-item">
 					<p class="text-center">이 곳에 상품을 놓아주세요.</p>
 				</div>
-				<div class="card-body">
-					<div></div>
-					<p class="card-text text-end">총합계 : 0원</p>
+				<div class="card-body card-copy-box">
+					<div class="card-copy">
+					</div>
+					<p class="card-text text-end total-price">총합계 : 0원</p>
 				</div>
-				<button class="btn btn-primary">구매하기</button>
+				<button class="btn btn-primary btn-buy">구매하기</button>
 			</div>
 		</div>
 	</div>
@@ -73,32 +85,82 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	<!-- jquery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src="script.js"></script>
+
 	<script src="store.json" type="text/javascript"></script>
 
 	<script>
 		//JSON 파일 읽기 -> html태그 생성
 		$.getJSON('./store.json', (data) => {
-			let jsonData = data;
-			// console.log(jsonData.products);
-			jsonData.products.forEach(elem => {
-				let cardTag = `<div class="card">
-					<img src="img/${elem.photo}" class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">${elem.product_name}</h5>
-						<p class="card-text">${elem.brand_name}</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">${elem.price}</small>
-					</div>
-					</div>`;
+			data.products.forEach(elem => {
+				let cardTag = `<div class="card card-item">
+			<img src="img/${elem.photo}" class="card-img-top">
+			<div class="card-body">
+				<h5 class="card-title">${elem.product_name}</h5>
+				<p class="card-text">${elem.brand_name}</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">${elem.price}</small>
+			</div>
+			</div>`;
 				$('.card-group').append(cardTag);
 			})
 		})
+
+		//검색기능
+		// 상품제목안에 저거 input에 입력한 글자가 들어있는지 찾으면 됩니다.
+		// 자바스크립트로 '안녕하세요'.indexOf('안') 이렇게 쓰시면
+		// '안'이라는 글자가 '안녕하세요' 글자에서 몇번째에 출현하는지를 퉤 뱉어줍니다.
+		// '안'이라는 글자가 없으면 아마 -1을 뱉어줄 겁니다.
+		$.getJSON('./store.json', (data) => {
+
+			$('.search-item').keyup(() => {
+				var word = $('.search-item').val();
+				$('.card-item').hide();
+
+				data.products.forEach((elem, index) => {
+					var firstWord = elem.product_name[0];
+					if (firstWord.indexOf(word) > -1) {
+						$('.card-item').eq(elem.id).show();
+					}
+				})
+			})
+		});
+
+		//드래그 & 드롭
+		$(function () {
+			$('.card-item').draggable({
+				revert: true,
+			});
+
+			var itemPrice = 0;
+
+			$('.shop-box').droppable({
+				drop: function (event, ui) {
+					var item = $(ui.draggable);
+					console.log(item);
+					$('.card-copy').append(item[0].innerHTML);
+					itemPrice += +item[0].innerText.split('\n')[4];
+
+					$('.total-price').html(`총합계 ${itemPrice}`);
+				},
+			});
+		});
+		// 캔버스 영수증
+		var canvas = document.querySelector('#canvas');
+		var c = canvas.getContext('2d');
+		c.font = '20px dotum';
+		var copyBox = $('.card-copy');
+
+		// 클릭하면
+		$('.btn-buy').click(() => {
+			$('.canvas-box').addClass('canvas-show');
+			var copyText = '';
+			copyText += copyBox[0].innerText.split(/\n+/);
+			c.fillText('영수증', 30, 30);
+			c.fillText(`${copyText}`, 30, 50);
+		})
 	</script>
+
 </body>
 
 </html>

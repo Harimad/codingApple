@@ -17,5 +17,24 @@
   padding: 30px;
 }
 
-.card-footer button {
+.card-item {
+  z-index: 2;
+}
+
+.shop-box {
+  z-index: 1;
+}
+
+.canvas-box {
+  width: 60%;
+  display: none;
+  position: fixed;
+  background: #eee;
+  top: 30%;
+  left: 20%;
+}
+
+.canvas-show {
+  display: block;
+  z-index: 3;
 }
