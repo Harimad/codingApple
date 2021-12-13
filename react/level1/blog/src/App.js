@@ -9,9 +9,20 @@ function App() {
 
   // 중요한 데이터는 변수말고 리액트 state로
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '뛰융의 맛집 리스트']);
-  let [따봉, 따봉변경] = useState([0, 0, 0]);
+  let [따봉, 따봉변경] = useState([1, 2, 3]);
   let [글번호, 글번호변경] = useState(0);
   let [입력값, 입력값변경] = useState('');
+
+  const 글추가 = (글) => {
+    let 글복사 = [...글제목];
+    글복사.unshift(글);
+    글제목변경(글복사);
+
+    // 따봉도 추가
+    let 따봉복사 = [...따봉];
+    따봉복사.unshift(0);
+    따봉변경(따봉복사);
+  }
 
   const 따봉함수 = (i) => {
     let 따봉copy = [...따봉];
@@ -47,8 +58,8 @@ function App() {
           )
         })
       }
-      {입력값}
       <input onChange={ (e) => {입력값변경(e.target.value)}}></input>
+      <button onClick={ () => {글추가(입력값)} }>글 추가</button>
       <button onClick={ () => {modal변경(!modal)} }>div토글버튼</button>
 
       {
