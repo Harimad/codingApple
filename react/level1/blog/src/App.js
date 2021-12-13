@@ -10,6 +10,8 @@ function App() {
   // 중요한 데이터는 변수말고 리액트 state로
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '뛰융의 맛집 리스트']);
   let [따봉, 따봉변경] = useState(0);
+  let [modal, modal변경] = useState(false);
+
   let posts = '강남 고기 맛집';
 
   //버튼 기능개발
@@ -43,8 +45,13 @@ function App() {
         <p>2월 17일 발행</p>
         <hr></hr>
       </div>
+      <button onClick={ () => {modal변경(!modal)} }>div토글버튼</button>
 
-      <Modal></Modal>
+      {
+        modal === true
+        ? <Modal></Modal>
+        : null
+      }
     </div>
   );
 }
@@ -58,5 +65,6 @@ function Modal() {
     </div>
   )
 }
+
 
 export default App;
