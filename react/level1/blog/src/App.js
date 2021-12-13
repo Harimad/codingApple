@@ -11,6 +11,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '뛰융의 맛집 리스트']);
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [글번호, 글번호변경] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
   const 따봉함수 = (i) => {
     let 따봉copy = [...따봉];
@@ -38,7 +39,7 @@ function App() {
       {
         글제목.map((글, i) => {
           return (
-            <div className='list'>
+            <div className='list' key={i}>
             <h3 onClick={() => 글번호변경(i)}> { 글 } <span onClick={ () => 따봉함수(i) }>👍</span> {따봉[i]}</h3>
             <p>2월 17일 발행</p>
             <hr></hr>
@@ -46,7 +47,8 @@ function App() {
           )
         })
       }
-
+      {입력값}
+      <input onChange={ (e) => {입력값변경(e.target.value)}}></input>
       <button onClick={ () => {modal변경(!modal)} }>div토글버튼</button>
 
       {
