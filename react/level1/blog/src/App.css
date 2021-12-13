@@ -19,6 +19,12 @@
   padding-right: 20px;
 }
 
+.modal {
+  padding: 20px;
+  background: #eee;
+  margin-top: 20px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
