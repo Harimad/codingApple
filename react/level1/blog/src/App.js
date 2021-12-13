@@ -67,10 +67,13 @@ function App() {
         ? <Modal 글제목={글제목} 글번호={글번호}></Modal>
         : null
       }
+
+      {/* 옛 React */}
+      <Profile></Profile>
     </div>
   );
 }
-
+// 요즘 React
 function Modal(props) {
   return (
     <div className='modal'>
@@ -79,6 +82,32 @@ function Modal(props) {
       <p>상세내용</p>
     </div>
   )
+}
+
+// 옛날 React
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: 'KIM', age: 30 }
+  }
+
+  changeName1() {
+    this.setState( {name: 'LEE'})
+  }
+  changeName2 = () => {
+    this.setState( {name: 'WOW'})
+  }
+
+  render() {
+    return (
+      <div>
+        <h3> 저는 {this.state.name} 입니다</h3>
+        <button onClick={ () => {this.setState( {name: 'PARK' } ) } }>park버튼</button>
+        <button onClick={ this.changeName1.bind(this) }>Lee버튼</button>
+        <button onClick={ this.changeName2 }>Lee버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
