@@ -1,7 +1,12 @@
+import React, {useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import Data from './data.js';
 import './App.css';
 
 function App() {
+
+  let [shoes, shoes변경] = useState(Data);
+
   return (
     <div className="App">
 
@@ -57,26 +62,38 @@ function App() {
       {/* Item Layout */}
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes1.jpg' width='100%'></img>
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg' width='100%'></img>
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg' width='100%'></img>
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
+
+          { //map으로 Item 생성
+            shoes.map((데이터) => {
+              return (
+              <div className='col-md-4'>
+                <img src= { 데이터.img } width='100%'></img>
+                <h4> { 데이터.title } </h4>
+                <p> { 데이터.content } & { 데이터.price }</p>
+              </div>
+              )
+            })
+          }
+          {/* Component로만 Item생성 */}
+          <Item shoes = {shoes}></Item>
         </div>
       </div>
-
     </div>
   );
+}
+
+function Item(props) {
+  return (
+    props.shoes.map((데이터) => {
+      return(
+        <div className='col-md-4'>
+          <img src= { 데이터.img } width='100%'></img>
+          <h4> { 데이터.title } </h4>
+          <p> { 데이터.content } & { 데이터.price }</p>
+        </div>
+      )
+    })
+  )
 }
 
 export default App;
