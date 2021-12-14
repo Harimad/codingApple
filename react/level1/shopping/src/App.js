@@ -62,37 +62,32 @@ function App() {
       {/* Item Layout */}
       <div className='container'>
         <div className='row'>
+          {/* Component로만 Card생성 */}
+          <Card shoes = {shoes[0]}></Card>
+          <Card shoes = {shoes[1]}></Card>
+          <Card shoes = {shoes[2]}></Card>
 
-          { //map으로 Item 생성
-            shoes.map((데이터) => {
+          {/* map으로 Card 생성 */}
+          {
+            shoes.map((데이터, i) => {
               return (
-              <div className='col-md-4'>
-                <img src= { 데이터.img } width='100%'></img>
-                <h4> { 데이터.title } </h4>
-                <p> { 데이터.content } & { 데이터.price }</p>
-              </div>
+                <Card shoes={데이터} key={i}></Card>
               )
             })
           }
-          {/* Component로만 Item생성 */}
-          <Item shoes = {shoes}></Item>
         </div>
       </div>
     </div>
   );
 }
 
-function Item(props) {
+function Card(props) {
   return (
-    props.shoes.map((데이터) => {
-      return(
-        <div className='col-md-4'>
-          <img src= { 데이터.img } width='100%'></img>
-          <h4> { 데이터.title } </h4>
-          <p> { 데이터.content } & { 데이터.price }</p>
-        </div>
-      )
-    })
+    <div className='col-md-4'>
+      <img src= { `https://codingapple1.github.io/shop/shoes${props.shoes.id+1}.jpg` } width='100%'></img>
+      <h4> { props.shoes.title } </h4>
+      <p> { props.shoes.content } & { props.shoes.price }</p>
+    </div>
   )
 }
 
