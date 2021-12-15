@@ -1,5 +1,15 @@
 import React from 'react';
 import {useHistory, useParams} from 'react-router-dom';
+import styled from 'styled-components';
+
+let 박스 = styled.div`
+	padding: 20px;
+	background: #eee;
+`;
+let 제목 = styled.h4`
+	font-size: 24px;
+	color: ${props => props.색상};
+`;
 
 function Detail(props) {
 	let history = useHistory();
@@ -23,6 +33,11 @@ function Detail(props) {
 					<button className="btn btn-danger">주문하기</button>
 					<button className="btn btn-danger" onClick={() => {history.push("/")}}>홈으로 가기</button>
 					<button className="btn btn-danger" onClick={() => {history.goBack()}}>뒤로가기</button>
+
+					<박스>
+						<제목 색상={'red'}>IIIII</제목>
+						<제목 색상={'blue'}>IIIII</제목>
+					</박스>
 				</div>
 			</div>
 		</div>
