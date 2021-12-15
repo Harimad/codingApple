@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import { Link, Route, Switch} from 'react-router-dom';
 import Data from './data.js';
+import Detail from './detail.js';
 import './App.css';
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Nav.Link><Link to={"/"}>Home</Link></Nav.Link>
+              <Nav.Link><Link to={"/detail"}>Detail</Link></Nav.Link>
               <NavDropdown title="Link" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -49,48 +50,42 @@ function App() {
         </Container>
       </Navbar>
 
-      <Route exact path={"/"}>
-        {/* Jumbotron */}
-        <div className='jumbotron background'>
-          <h1>Hello, world!</h1>
-          <p>
-            This is a simple hero unit, a simple jumbotron-style component for calling
-            extra attention to featured content or information.
-          </p>
-          <p>
-            <Button variant="primary">Learn more</Button>
-          </p>
-        </div>
-
-        {/* Item Layout */}
-        <div className='container'>
-          <div className='row'>
-            {
-              shoes.map((데이터, i) => {
-                return (
-                  <Card shoes={데이터} key={i}></Card>
-                )
-              })
-            }
+      <Switch>
+        <Route exact path={"/"}>
+          {/* Jumbotron */}
+          <div className='jumbotron background'>
+            <h1>Hello, world!</h1>
+            <p>
+              This is a simple hero unit, a simple jumbotron-style component for calling
+              extra attention to featured content or information.
+            </p>
+            <p>
+              <Button variant="primary">Learn more</Button>
+            </p>
           </div>
-        </div>
-      </Route>
 
-      <Route path={"/detail"}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-            </div>
-            <div className="col-md-6 mt-4">
-              <h4 className="pt-5">상품명</h4>
-              <p>상품설명</p>
-              <p>120000원</p>
-              <button className="btn btn-danger">주문하기</button>
+          {/* Item Layout */}
+          <div className='container'>
+            <div className='row'>
+              {
+                shoes.map((데이터, i) => {
+                  return (
+                    <Card shoes={데이터} key={i}></Card>
+                  )
+                })
+              }
             </div>
           </div>
-        </div>
-      </Route>
+        </Route>
+
+        <Route path={"/detail"}>
+          <Detail></Detail>
+        </Route>
+
+        <Route path={"/:id"}>
+          <div>새로 만든 route 입니다</div>
+        </Route>
+      </Switch>
     </div>
   );
 }
