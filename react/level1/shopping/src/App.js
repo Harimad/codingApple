@@ -78,12 +78,12 @@ function App() {
           </div>
         </Route>
 
-        <Route path={"/detail"}>
-          <Detail></Detail>
-        </Route>
+        {/* <Route path={"/detail"}>
+          <Detail shoes={shoes}></Detail>
+        </Route> */}
 
-        <Route path={"/:id"}>
-          <div>새로 만든 route 입니다</div>
+        <Route path={"/detail/:id"}>
+          <Detail shoes={shoes}></Detail>
         </Route>
       </Switch>
     </div>
