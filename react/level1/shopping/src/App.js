@@ -1,5 +1,7 @@
+/*ESlint disabled*/
 import React, {useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import { Link, Route, Switch} from 'react-router-dom';
 import Data from './data.js';
 import './App.css';
 
@@ -9,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-
+      {/* Navbar */}
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#">Shoes Shop</Navbar.Brand>
@@ -47,36 +49,48 @@ function App() {
         </Container>
       </Navbar>
 
-      {/* Jumbotron */}
-      <div className='jumbotron background'>
-        <h1>Hello, world!</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
-      </div>
-
-      {/* Item Layout */}
-      <div className='container'>
-        <div className='row'>
-          {/* Component로만 Card생성 */}
-          <Card shoes = {shoes[0]}></Card>
-          <Card shoes = {shoes[1]}></Card>
-          <Card shoes = {shoes[2]}></Card>
-
-          {/* map으로 Card 생성 */}
-          {
-            shoes.map((데이터, i) => {
-              return (
-                <Card shoes={데이터} key={i}></Card>
-              )
-            })
-          }
+      <Route exact path={"/"}>
+        {/* Jumbotron */}
+        <div className='jumbotron background'>
+          <h1>Hello, world!</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.
+          </p>
+          <p>
+            <Button variant="primary">Learn more</Button>
+          </p>
         </div>
-      </div>
+
+        {/* Item Layout */}
+        <div className='container'>
+          <div className='row'>
+            {
+              shoes.map((데이터, i) => {
+                return (
+                  <Card shoes={데이터} key={i}></Card>
+                )
+              })
+            }
+          </div>
+        </div>
+      </Route>
+
+      <Route path={"/detail"}>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+            </div>
+            <div className="col-md-6 mt-4">
+              <h4 className="pt-5">상품명</h4>
+              <p>상품설명</p>
+              <p>120000원</p>
+              <button className="btn btn-danger">주문하기</button>
+            </div>
+          </div>
+        </div>
+      </Route>
     </div>
   );
 }
