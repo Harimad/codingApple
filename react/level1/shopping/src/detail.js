@@ -1,6 +1,7 @@
 import React from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import styled from 'styled-components';
+import './Detail.scss';
 
 let 박스 = styled.div`
 	padding: 20px;
@@ -36,8 +37,11 @@ function Detail(props) {
 
 					<박스>
 						<제목 색상={'red'}>IIIII</제목>
-						<제목 색상={'blue'}>IIIII</제목>
+						<제목 className='blue'>IIIII</제목>
 					</박스>
+					<div className='my-new-alert'>
+						<p>재고가 얼마 남지 않았습니다</p>
+					</div>
 				</div>
 			</div>
 		</div>

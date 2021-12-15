@@ -78,10 +78,7 @@ function App() {
           </div>
         </Route>
 
-        {/* <Route path={"/detail"}>
-          <Detail shoes={shoes}></Detail>
-        </Route> */}
-
+        {/* Detail */}
         <Route path={"/detail/:id"}>
           <Detail shoes={shoes}></Detail>
         </Route>
