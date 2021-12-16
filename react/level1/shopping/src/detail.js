@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -20,11 +20,22 @@ function Detail(props) {
 		return 상품.id == id;
 	});
 
+	useEffect(() => {
+		setTimeout(() => {
+			document.querySelector('.my-new-alert').style.background = "red";
+		},1000)
+	});
+	useEffect(() => {
+		setTimeout(() => {
+			document.querySelector('.my-new-alert').style.display	= "none";
+		}, 2000)
+	});
+
 	return (
 		<div className="container">
 			<div className="row">
 				<div className="col-md-6">
-					<img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+					<img src={`https://codingapple1.github.io/shop/shoes${찾은상품.id+1}.jpg`} width="100%" />
 				</div>
 				<div className="col-md-6 mt-4">
 					<h4 className="pt-5"> {찾은상품.title} </h4>
