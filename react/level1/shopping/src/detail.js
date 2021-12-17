@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -20,16 +20,14 @@ function Detail(props) {
 		return 상품.id == id;
 	});
 
+	let [alert, alert변경] = useState(true);
+	let [inputData, inputData변경] = useState('');
+
 	useEffect(() => {
-		setTimeout(() => {
-			document.querySelector('.my-new-alert').style.background = "red";
-		},1000)
-	});
-	useEffect(() => {
-		setTimeout(() => {
-			document.querySelector('.my-new-alert').style.display	= "none";
-		}, 2000)
-	});
+		let 타이머 =setTimeout(() => { alert변경(false)},2000)
+
+		return ()=>{ clearTimeout(타이머) }
+	}, []);
 
 	return (
 		<div className="container">
@@ -50,9 +48,16 @@ function Detail(props) {
 						<제목 색상={'red'}>IIIII</제목>
 						<제목 className='blue'>IIIII</제목>
 					</박스>
-					<div className='my-new-alert'>
-						<p>재고가 얼마 남지 않았습니다</p>
-					</div>
+
+					{inputData}
+					<input onChange={(e)=>{inputData변경(e.target.value)}}></input>
+					{
+						alert === true
+						? (<div className='my-new-alert'>
+							<p>재고가 얼마 남지 않았습니다</p>
+						</div>)
+						: null
+					}
 				</div>
 			</div>
 		</div>
