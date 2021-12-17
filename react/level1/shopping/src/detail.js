@@ -25,9 +25,9 @@ function Detail(props) {
 
 	useEffect(() => {
 		let 타이머 =setTimeout(() => { alert변경(false)},2000)
-
 		return ()=>{ clearTimeout(타이머) }
 	}, []);
+
 
 	return (
 		<div className="container">

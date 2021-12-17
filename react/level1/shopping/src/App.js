@@ -1,7 +1,8 @@
 /*ESlint disabled*/
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import { Link, Route, Switch} from 'react-router-dom';
+import axios from 'axios';
 import Data from './data.js';
 import Detail from './detail.js';
 import './App.css';
@@ -9,6 +10,12 @@ import './App.css';
 function App() {
 
   let [shoes, shoes변경] = useState(Data);
+  let [btnCount, btnCount변경] = useState(1);
+
+  // useEffect(() => {
+  //   처음 로딩할떄 ajax 받아올때
+	// 	axios.get('웹사이트').then().catch();
+  // }, []);
 
   return (
     <div className="App">
@@ -76,12 +83,36 @@ function App() {
               }
             </div>
           </div>
+          <p className='text-center'>
+            <Button variant="primary" onClick={() => {
+              // 로딩중 UI 띄움(실습)
+              // ...
+              // 서버로 데이터 보냄
+              // axios.post('서버URL', {id=3, pw="sdasdas"}).then()
+
+              axios.get(`https://codingapple1.github.io/shop/data${btnCount+1}.json`)
+              .then((result) => {
+                // 로딩중 UI 삭제(실습)
+
+                console.log(result.data);
+                shoes변경([...shoes, ...result.data]);
+                btnCount변경(btnCount + 1);
+                console.log(btnCount);
+              })
+              .catch(() => {
+                // 로딩중 UI 삭제(실습)
+                console.log('실패');
+                // btnCount변경(false)
+              })
+            }}>더보기</Button>
+          </p>
         </Route>
 
         {/* Detail */}
         <Route path={"/detail/:id"}>
           <Detail shoes={shoes}></Detail>
         </Route>
+
       </Switch>
     </div>
   );
