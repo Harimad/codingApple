@@ -60,7 +60,17 @@ function Detail(props) {
 					}
 				</div>
 			</div>
+
+			<Info 재고={props.재고}></Info>
+			<button onClick={()=>{props.재고변경([9,10,11])}}>주문하기</button>
 		</div>
 	)
 };
+
+function Info(props) {
+	return (
+		<p>재고 : {props.재고[0]}</p>
+	)
+}
+
 export default Detail

@@ -11,7 +11,7 @@ function App() {
 
   let [shoes, shoes변경] = useState(Data);
   let [btnCount, btnCount변경] = useState(1);
-
+  let [재고, 재고변경] =useState([10, 11, 12]);
   // useEffect(() => {
   //   처음 로딩할떄 ajax 받아올때
 	// 	axios.get('웹사이트').then().catch();
@@ -110,7 +110,7 @@ function App() {
 
         {/* Detail */}
         <Route path={"/detail/:id"}>
-          <Detail shoes={shoes}></Detail>
+          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
         </Route>
 
       </Switch>
