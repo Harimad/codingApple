@@ -1,11 +1,13 @@
 /*ESlint disabled*/
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import { Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Data from './data.js';
 import Detail from './detail.js';
 import './App.css';
+
+export let 재고context = React.createContext();
 
 function App() {
 
@@ -58,7 +60,8 @@ function App() {
       </Navbar>
 
       <Switch>
-        <Route exact path={"/"}>
+        <재고context.Provider value={재고}>
+          <Route exact path={"/"}>
           {/* Jumbotron */}
           <div className='jumbotron background'>
             <h1>Hello, world!</h1>
@@ -112,20 +115,30 @@ function App() {
         <Route path={"/detail/:id"}>
           <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
         </Route>
-
+        </재고context.Provider>
       </Switch>
     </div>
   );
 }
 
 function Card(props) {
+  let 재고 = useContext(재고context);
+
   return (
     <div className='col-md-4'>
       <img src= { `https://codingapple1.github.io/shop/shoes${props.shoes.id+1}.jpg` } width='100%'></img>
       <h4> { props.shoes.title } </h4>
       <p> { props.shoes.content } & { props.shoes.price }</p>
+      <div>{재고[0]}</div>
+      <Test></Test>
     </div>
   )
+}
+
+function Test() {
+  let 재고 = useContext(재고context);
+
+  return <p>재고: {재고}</p>
 }
 
 export default App;

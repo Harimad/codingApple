@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
+import {재고context} from './App.js';
 
 let 박스 = styled.div`
 	padding: 20px;
@@ -28,6 +29,7 @@ function Detail(props) {
 		return ()=>{ clearTimeout(타이머) }
 	}, []);
 
+	let 재고 = useContext(재고context);
 
 	return (
 		<div className="container">
