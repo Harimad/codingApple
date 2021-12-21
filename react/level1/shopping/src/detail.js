@@ -1,8 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 import styled from 'styled-components';
-import './Detail.scss';
 import {재고context} from './App.js';
+import {Nav} from 'react-bootstrap';
+import './Detail.scss';
 
 let 박스 = styled.div`
 	padding: 20px;
@@ -30,6 +32,9 @@ function Detail(props) {
 	}, []);
 
 	let 재고 = useContext(재고context);
+	let [누른탭, 누른탭변경] = useState(0);
+
+	let [스위치, 스위치변경] = useState(false);
 
 	return (
 		<div className="container">
@@ -65,6 +70,21 @@ function Detail(props) {
 
 			<Info 재고={props.재고}></Info>
 			<button onClick={()=>{props.재고변경([9,10,11])}}>주문하기</button>
+			<hr></hr>
+			<div>
+				<Nav variant="tabs" defaultActiveKey="link-0">
+					<Nav.Item>
+						<Nav.Link eventKey="link-0" onClick={ () => {스위치변경(false); 누른탭변경(0)} }>Active</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link eventKey="link-1" onClick={ () => {스위치변경(false); 누른탭변경(1)} }>Option 2</Nav.Link>
+					</Nav.Item>
+				</Nav>
+
+				<CSSTransition in={스위치} classNames="wow" timeout={500}>
+					<TabContent 누른탭={누른탭} 스위치변경={스위치변경}/>
+				</CSSTransition>
+			</div>
 		</div>
 	)
 };
@@ -73,6 +93,20 @@ function Info(props) {
 	return (
 		<p>재고 : {props.재고[0]}</p>
 	)
+}
+
+function TabContent(props){
+	useEffect(() => {
+		props.스위치변경(true);
+	});
+
+	if (props.누른탭 === 0){
+		return <div>내용0</div>
+	} else if (props.누른탭 === 1){
+		return <div>내용1</div>
+	} else if (props.누른탭 === 2){
+		return <div>내용2</div>
+	}
 }
 
 export default Detail

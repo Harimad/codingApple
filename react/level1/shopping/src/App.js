@@ -60,8 +60,7 @@ function App() {
       </Navbar>
 
       <Switch>
-        <재고context.Provider value={재고}>
-          <Route exact path={"/"}>
+        <Route exact path={"/"}>
           {/* Jumbotron */}
           <div className='jumbotron background'>
             <h1>Hello, world!</h1>
@@ -113,9 +112,10 @@ function App() {
 
         {/* Detail */}
         <Route path={"/detail/:id"}>
+        <재고context.Provider value={재고}>
           <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
-        </Route>
         </재고context.Provider>
+        </Route>
       </Switch>
     </div>
   );
