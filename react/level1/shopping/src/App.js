@@ -1,11 +1,13 @@
 /*ESlint disabled*/
 import React, {useEffect, useState, useContext} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
-import { Link, Route, Switch} from 'react-router-dom';
+import { Link, Route, Router, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Data from './data.js';
 import Detail from './detail.js';
 import './App.css';
+import Cart from './Cart.js';
+
 
 export let 재고context = React.createContext();
 
@@ -112,9 +114,13 @@ function App() {
 
         {/* Detail */}
         <Route path={"/detail/:id"}>
-        <재고context.Provider value={재고}>
-          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
-        </재고context.Provider>
+          <재고context.Provider value={재고}>
+            <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
+          </재고context.Provider>
+        </Route>
+
+        <Route path={"/cart"}>
+          <Cart></Cart>
         </Route>
       </Switch>
     </div>
