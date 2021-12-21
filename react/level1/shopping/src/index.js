@@ -8,9 +8,13 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-let store = createStore(() => { return [
-  {id: 0, name: '멋진신발', quan: 2}
-]})
+let store = createStore(() => {
+  return [
+    {id: 0, name: '멋진신발', quan: 2},
+    {id: 1, name: '둥근신발', quan: 10},
+    {id: 2, name: '뾰족신발', quan: 21}
+  ]
+})
 
 ReactDOM.render(
   <React.StrictMode>

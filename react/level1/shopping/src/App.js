@@ -1,7 +1,7 @@
 /*ESlint disabled*/
 import React, {useEffect, useState, useContext} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
-import { Link, Route, Router, Switch} from 'react-router-dom';
+import { Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Data from './data.js';
 import Detail from './detail.js';
