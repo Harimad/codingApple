@@ -8,13 +8,29 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-let store = createStore(() => {
-  return [
-    {id: 0, name: '멋진신발', quan: 2},
-    {id: 1, name: '둥근신발', quan: 10},
-    {id: 2, name: '뾰족신발', quan: 21}
-  ]
-})
+let 기본state = [
+  {id: 0, name: '멋진신발', quan: 2},
+  {id: 1, name: '둥근신발', quan: 10},
+  {id: 2, name: '뾰족신발', quan: 21}
+];
+
+function reducer(state = 기본state, 액션) {
+  // 버튼 누른 index 찾기
+  let idx = state.findIndex(elem => elem.id === 액션.num );
+
+  if (액션.type === '수량증가') {
+    let copy = [...state];
+    copy[idx].quan++;
+    return copy
+  } else if (액션.type === '수량감소') {
+    let copy = [...state];
+    copy[idx].quan--;
+    return copy;
+  }
+  return state
+}
+
+let store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>

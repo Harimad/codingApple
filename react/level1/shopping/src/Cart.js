@@ -15,27 +15,21 @@ function Cart(props){
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>{props.state[0].name}</td>
-						<td>Table Cell3</td>
-						<td>Table Cell4</td>
-					</tr>
-					{console.log(props)}
-					{
-						props.state.map((x, i) => {
-							return (
-								<tr key={i}>
-									<td>{x.id}</td>
-									<td>{x.name}</td>
-									<td>{x.quan}</td>
-									<td>
-										<button> + </button>
-									</td>
-								</tr>
-							)
-						})
-					}
+				{
+					props.state.map((x, i) => {
+						return (
+							<tr key={i}>
+								<td>{x.id}</td>
+								<td>{x.name}</td>
+								<td>{x.quan}</td>
+								<td>
+									<button onClick={() => { props.dispatch({type: '수량증가', num: x.id}) }}> + </button>
+									<button onClick={() => { props.dispatch({type: '수량감소', num: x.id}) }}> - </button>
+								</td>
+							</tr>
+						)
+					})
+				}
 				</tbody>
       </Table>
     </div>
