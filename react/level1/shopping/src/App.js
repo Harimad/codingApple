@@ -1,7 +1,7 @@
 /*ESlint disabled*/
 import React, {useEffect, useState, useContext} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
-import { Link, Route, Switch} from 'react-router-dom';
+import { Link, Route, Switch, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import Data from './data.js';
 import Detail from './detail.js';
@@ -9,24 +9,25 @@ import './App.css';
 import Cart from './Cart.js';
 
 
-export let 재고context = React.createContext();
+export let 재고context = React.createContext(); //같은 변수값을 공유할 범위 생성
 
 function App() {
 
   let [shoes, shoes변경] = useState(Data);
   let [btnCount, btnCount변경] = useState(1);
-  let [재고, 재고변경] =useState([10, 11, 12]);
+  let [재고, 재고변경] =useState([100, 111, 122]);
   // useEffect(() => {
   //   처음 로딩할떄 ajax 받아올때
 	// 	axios.get('웹사이트').then().catch();
   // }, []);
+  let history = useHistory();
 
   return (
     <div className="App">
       {/* Navbar */}
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Shoes Shop</Navbar.Brand>
+          <Navbar.Brand href="#" onClick={()=>{history.push('/')}}>Shoes Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -77,15 +78,13 @@ function App() {
 
           {/* Item Layout */}
           <div className='container'>
-            <div className='row'>
-              {
-                shoes.map((데이터, i) => {
-                  return (
-                    <Card shoes={데이터} key={i}></Card>
-                  )
-                })
-              }
-            </div>
+            <재고context.Provider value={재고}>
+              <div className='row'>
+                {shoes.map((데이터, i) => {
+                    return (<Card shoes={데이터} key={i}></Card>)
+                  })}
+              </div>
+            </재고context.Provider>
           </div>
           <p className='text-center'>
             <Button variant="primary" onClick={() => {
@@ -98,7 +97,7 @@ function App() {
               .then((result) => {
                 // 로딩중 UI 삭제(실습)
 
-                console.log(result.data);
+                // console.log(result.data);
                 shoes변경([...shoes, ...result.data]);
                 btnCount변경(btnCount + 1);
                 console.log(btnCount);
@@ -129,22 +128,21 @@ function App() {
 
 function Card(props) {
   let 재고 = useContext(재고context);
-
+  let history = useHistory();
   return (
-    <div className='col-md-4'>
+    <div className='col-md-4' onClick={() => {history.push(`/detail/${props.shoes.id}`)}}>
       <img src= { `https://codingapple1.github.io/shop/shoes${props.shoes.id+1}.jpg` } width='100%'></img>
       <h4> { props.shoes.title } </h4>
       <p> { props.shoes.content } & { props.shoes.price }</p>
-      <div>{재고[0]}</div>
-      <Test></Test>
+      <Test shoes={props.shoes}></Test>
     </div>
   )
 }
 
-function Test() {
+function Test(props) {
   let 재고 = useContext(재고context);
-
-  return <p>재고: {재고}</p>
+  console.log(재고);
+  return <p>재고: {재고[props.shoes.id]}</p>
 }
 
 export default App;

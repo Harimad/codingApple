@@ -9,30 +9,36 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
 let 기본state = [
-  {id: 0, name: '멋진신발', quan: 2},
-  {id: 1, name: '둥근신발', quan: 10},
+  // {id: 10, name: '멋진신발', quan: 2},
+  // {id: 11, name: '둥근신발', quan: 10},
 ];
 
 function reducer(state = 기본state, 액션) {
-  // 버튼 누른 index 찾기
-  let idx = state.findIndex(elem => elem.id === 액션.num );
 
   if (액션.type === '항목추가') {
-    let copy = [...state];
-    copy.push(액션.payload);
-    return copy;
+    let 몇번째있니 = state.findIndex((a) => {return a.id === 액션.데이터.id})
+
+    if(몇번째있니 >= 0) {
+      let copy = [...state];
+      copy[몇번째있니].quan++;
+    } else {
+      let copy = [...state];
+      copy.push(액션.데이터);
+      return copy;
+    }
   }
 
   if (액션.type === '수량증가') {
     let copy = [...state];
-    copy[idx].quan++;
+    copy[액션.데이터].quan++;
     return copy
   } else if (액션.type === '수량감소') {
     let copy = [...state];
-    copy[idx].quan--;
+    copy[액션.데이터].quan--;
     return copy;
+  } else {
+    return state
   }
-  return state
 }
 
 let alert초기값 = true;

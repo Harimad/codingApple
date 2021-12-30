@@ -69,11 +69,12 @@ function Detail(props) {
 				</div>
 			</div>
 
-			<Info 재고={props.재고}></Info>
+			<Info 재고={props.재고} shoes={props.shoes}></Info>
+			{재고[찾은상품.id]}
 			{/* <button onClick={()=>{props.재고변경([9,10,11])}}>주문하기</button> */}
 			<button onClick={()=>{
 
-				props.dispatch({type: '항목추가', payload: {id: 2, name: '새상품', quan: 1}})
+				props.dispatch({type: '항목추가', 데이터: {id: 찾은상품.id, name: 찾은상품.title, quan: 1}})
 				history.push('/cart');
 
 				}}>주문하기</button>
@@ -97,8 +98,12 @@ function Detail(props) {
 };
 
 function Info(props) {
+	let { id } = useParams();
+	let 찾은상품 = props.shoes.find(function(상품){
+		return 상품.id == id;
+	});
 	return (
-		<p>재고 : {props.재고[0]}</p>
+		<p>재고 : {props.재고[찾은상품.id]}</p>
 	)
 }
 
