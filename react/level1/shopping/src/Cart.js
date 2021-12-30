@@ -1,5 +1,4 @@
 import React from 'react';
-// import './Detail.scss';
 import {Table} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
@@ -45,6 +44,7 @@ function Cart(props){
 }
 
 function state를props화(state) {
+	// console.log(state);
 	return {
 		state: state.reducer,
 		alert열렸니 : state.reducer2

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {재고context} from './App.js';
 import {Nav} from 'react-bootstrap';
 import './Detail.scss';
+import {connect} from 'react-redux';
 
 let 박스 = styled.div`
 	padding: 20px;
@@ -69,7 +70,13 @@ function Detail(props) {
 			</div>
 
 			<Info 재고={props.재고}></Info>
-			<button onClick={()=>{props.재고변경([9,10,11])}}>주문하기</button>
+			{/* <button onClick={()=>{props.재고변경([9,10,11])}}>주문하기</button> */}
+			<button onClick={()=>{
+
+				props.dispatch({type: '항목추가', payload: {id: 2, name: '새상품', quan: 1}})
+				history.push('/cart');
+
+				}}>주문하기</button>
 			<hr></hr>
 			<div>
 				<Nav variant="tabs" defaultActiveKey="link-0">
@@ -109,4 +116,11 @@ function TabContent(props){
 	}
 }
 
-export default Detail
+function state를props화(state) {
+	// console.log(state);
+	return {
+		state: state.reducer,
+		alert열렸니: state.reducer2
+	}
+}
+export default connect(state를props화)(Detail);
