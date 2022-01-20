@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>변수 신문법 총정리 2</title>
+</head>
+
+<body>
+	<script>
+		//자바스크립트 변수, 함수의 Hoisting 현상
+		function 함수() {
+			console.log('hello');
+			var 이름 = 'kim';
+		}
+		//위 코드의 실행 순서는 아래와 같다
+		//변수의 선언 부분을 강제로 변수의 범위 맨 위로 끌고가서 해석-
+		function 함수() {
+			var 이름;
+			console.log('hello');
+			이름 = 'kim';
+		}
+
+		//전역변수 저장방법 2가지
+		var 전역1 = '전역1';
+		window.전역2 = '전역2';
+		let 전역3 = '전역3'
+
+		console.log(전역1, 전역2); // 전역1, 전역2
+		console.log(window.전역1); // 전역2
+		console.log(window.전역3); //undefined
+		// window 객체는 자바스크립트 기본 함수를 보관하는 객체임
+		// 쌩으로 전역변수 선언하면 window에도 보관됨
+
+		//그래서 전역변수를 더 엄격하게 구분지으려면 window를 쓴다
+		window.이름 = 'Tom';
+		console.log(window.이름, 이름); //Tom Tom
+	</script>
+</body>
+
+</html>

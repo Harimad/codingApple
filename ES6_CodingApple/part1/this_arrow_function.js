@@ -26,6 +26,6 @@ console.log(자료.자료전부더하기()); //15
 
 // 3. setTimeout 이용해보기
 document.getElementById('버튼').addEventListener('click', function() {
-	setTimeout(() => {console.log(this.innerHTML)}, 1000); //undefined
+	setTimeout(() => {console.log(this.innerHTML)}, 1000); //버튼
 });
 
