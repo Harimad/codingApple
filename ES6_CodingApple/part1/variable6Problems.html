@@ -17,6 +17,9 @@
 			console.log(안녕); //Uncaught ReferenceError: Cannot access '안녕' before initialization
 			let 안녕 = 'Hello!';
 		}
+		//함수 실행을 함수선언 전에 해도 되나? ㅇㅇ 호이스팅됨
+		// let 안녕도 function 함수1 안에서 호이스팅 되지만 let, const는 이런식으로 쓰면 안됨
+
 
 		//Q2.
 		함수2();
@@ -24,6 +27,11 @@
 			console.log(안녕); //Uncaught TypeError: 함수2 is not a function
 			var 안녕 = 'Hello!';
 		}
+		//함수실행을 함수선언 전에 해도 되나? ㅇㅇ
+		//그러나 함수 표현식은 함수 내용이 전부 호이스팅 되는게 아니다.
+		//함수 표현식 해당 줄이 읽혀야 함수가 선언 완료됨.
+		//함수 선언전에 실행해버리면 함수가 아니라고 에러가 난다.
+
 
 		// //Q3.
 		let a = 1;
@@ -49,6 +57,7 @@
 		setTimeout(function () { console.log(3); }, 3000);
 		setTimeout(function () { console.log(4); }, 4000);
 		setTimeout(function () { console.log(5); }, 5000);
+
 		//6만 계속 출력. 원인은?
 		for (var i = 1; i < 6; i++) {
 			setTimeout(function () { console.log(i); }, i * 1000);
@@ -56,6 +65,11 @@
 		//var -> let으로 변경하면 제대로 출력됨
 		//6이 나오는 이유: setTimeout은 비동기 함수이므로 for반복문이 i = 1에서 6까지 진행되고나서 실행됨
 		//그래서 setTimeout에 인자 i가 6만 들어간다.
+
+		for (let i = 1; i < 6; i++) {
+			//let i = 0 -> 1 -> 2 ... 5 생성되어 아래 인자로 들어감
+			setTimeout(function () { console.log(i) });
+		}
 	</script>
 
 
@@ -69,16 +83,21 @@
 	<button>버튼3</button>
 
 	<script>
-		//Q6. 각 버튼 누르면 해당 모달창 어떻게 띄울까?
-		const $modals = document.querySelectorAll('div');
-		const $buttons = document.querySelectorAll('button');
+		//Q6. 각 버튼 누르면 오류 나는 이유와 해결책은?
+		const $버튼들 = document.querySelectorAll('div');
+		const $모달창들 = document.querySelectorAll('button');
 
-		$buttons.forEach((value, index) => {
-			value.addEventListener('click', () => {
-				console.log(value, index);
-				$modals[index].style.display = 'block';
+		for (var i = 0; i < 3; i++) {
+			$버튼들[i].addEventListener('click', function () {
+				$모달창들[i].style.display = 'block'
 			});
-		})
+		}
+		//코드 실행순서
+		//1. 반복문 내 코드 3번 돌아감
+		//2. 이벤트리스너의 콜백함수는 나중에(클릭시에) 실행됨
+		//3. 클릭 -> 콜백함수속 i인자를 채우려 보니까 i = 3인 값이 들어감
+
+		//해결책: var i 를 let i로 진행
 	</script>
 </body>
 
