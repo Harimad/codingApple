@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 업그레이드하기(defualt parameter / arguments)</title>
+</head>
+
+<body>
+	<script>
+		// 함수의 default 파라미터 넣기
+		function 더하기(a, b = 10, c = 2 * 5, d = 2 * a) {
+			console.log(a, b, c, d);
+		}
+		더하기(1); // 1 10 10 2
+
+		// default 파라미터엔 함수입력도 가능
+		function 임시함수() {
+			return 10
+		}
+		function 더하기(a, b = 임시함수()) {
+			console.log(a + b);
+		}
+		더하기(3); // 3 + 10 = 13
+
+		//함수의 arguments (모든 파라미터들을 전부 한꺼번에 싸잡아서 다루고 싶은 경우 사용)
+		function 함수(a, b, c) {
+			console.log(arguments);
+		}
+		함수(2, 3, 4);
+	</script>
+</body>
+
+</html>
