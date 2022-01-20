@@ -10,62 +10,75 @@
 
 <body>
 	<script>
+		//spread는 문자의 '', 배열의 [], 객체의 {}를 벗겨주는 역할을 한다
+
+
 		// 1. spread 문제 1
+
 		var a = [1, 2, 3];
 		var b = '김밥';
 		var c = [...b, ...a];
 		console.log(c); //['김', '밥', 1, 2, 3] //string은 spreadOperator에서 쪼개져서 저장됨
 
+
 		// 2. spread 문제 2
+
 		var a = [1, 2, 3];
 		var b = ['you', 'are'];
 		var c = function (a, b) {
-			console.log([[...a], [...b]]); // [Array(3), Array(2)]
-			console.log([[...a], ...[...b]]); // [Array(3), 'you', 'are']
+			console.log([[...a], [...b]]); // [ [1, 2, 3], ['you', 'are'] ]
+			console.log([[...a], ...[...b]]); // [ [1, 2, 3], 'you', 'are']
 			console.log([[...a], ...[...b]][1]); // you
 		}
 		c(a, b);
 
+
 		// 3. default 파라미터 문제 1
+
 		function 함수0(a = 5, b = a * 2) {
 			console.log(a + b);
 			return 10
 		}
 		함수0(3); // 9
 
+
 		// 4. default 파라미터 문제 2
+
 		function 함수1(a = 5, b = a * 2) {
 			console.log(a + b);
 		}
 		함수1(undefined, undefined); // 15
 
+
 		// 5. array를 만들어주는 함수를 제작하고 싶습니다.
-		function makeArray(...rests) {
-			return [...rests];
+
+		function makeArray(...rest) {
+			return rest;
 		}
 		var newArray = makeArray(1, 2, 3, 4, 5);
 		console.log(newArray); // [1, 2, 3, 4, 5]
 
+
 		// 6. 최댓값 구하기
+
 		var numbers = [2, 3, 4, 5, 6, 1, 3, 2, 5, 5, 4, 6, 7];
 		console.log(Math.max(...numbers));
 
+
 		// 7. 글자를 알파벳순으로 정렬해주는 함수를 만들고 싶습니다.
+
 		console.log(['b', 'c', 'a'].sort()); // ['a', 'b', 'c']
 
-		function 정렬([...rests]) {
-			console.log(rests); // ['b', 'e', 'a', 'r']
-			console.log(rests.sort()); // ['a', 'b', 'e', 'r']
+		function 정렬(글자) {
+			console.log([...글자]); // ['b', 'e', 'a', 'r']
+			console.log([...글자].sort()); // ['a', 'b', 'e', 'r']
+			console.log([...글자].sort().join()); // a,b,e,r
 		}
 		정렬('bear');
 
-		function 정렬2({ ...rests }) {
-			console.log(rests);
-		}
-		정렬2('bear'); // {0: 'b', 1: 'e', 2: 'a', 3: 'r'}
 
 		// 8. 데이터마이닝 기능 만들기
-
+		//--1--스택오버플로우----//
 		function 글자세기([...문자]) {
 			console.log(문자); // ['a', 'a', 'c', 'b', 'b', 'b']
 			console.log(문자.sort()); // ['a', 'a', 'b', 'b', 'b', 'c']
@@ -77,6 +90,25 @@
 		}
 		console.log(글자세기('aacbbb')) // { a : 2, b : 3, c : 1 }
 		console.log(글자세기('asldlksamdksladlwndlajsdkjlsakdasdl'));
+
+		//--2--apple쌤꺼----//
+		function 글자세기2(글자) {
+			// console.log([...글자]); // foreach쓰기위해 글자를 array로 만들어줌 // ['a', 'a', 'c', 'b', 'b', 'b']
+
+			var 결과 = {};
+			// 만약에 결과에 a가 있으면 +1 해주고
+			// 없으면 a : 1 집어넣으세요
+			[...글자].forEach((a) => {
+				if (결과[a] > 0) {
+					결과[a] = 결과[a]++;
+				} else {
+					결과[a] = 1;
+				}
+			});
+			console.log(결과);
+		}
+
+		글자세기2('aacbbb') // { a : 2, b : 3, c : 1 }
 	</script>
 </body>
 
