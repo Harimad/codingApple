@@ -30,7 +30,7 @@
 		var c = [...a, ...b];
 		console.log(c); // [ 1, 2, 3,   4, 5 ]
 
-		//깊은 복사 가능
+		//4. 깊은 복사 가능
 
 		var a = [1, 2, 3];
 		var b = a; //얕은 복사(값 공유) - 같은 값을 가리키기 때문
@@ -49,6 +49,46 @@
 		// Spread Operator 사용처?
 		// 함수소괄호 인자, 오브젝트 중괄호내, 어레이 대괄호내에서 사용
 		// 다른 곳에 쓰면 에러남
+
+		//--------------------------------------------------------------//
+
+		//Spread Operator 활용방법 2
+		function 더하기(a, b, c) {
+			console.log(a + b + c);
+		}
+
+		var 어레이 = [10, 20, 30];
+		//노가다
+		더하기(어레이[0], 어레이[1], 어레이[2]); //60
+		//옛날방식
+		더하기.apply(undefined, 어레이); //60 //undefiend에다가 어레이를 넣어서 함수 실행해 주세요의 뜻
+		//요즘방식
+		더하기(...어레이); //60
+
+		//--------------------------------------------------------------//
+
+		//apply 설명
+		var person = {
+			name: 'Kim',
+			인사: function () {
+				console.log(this.name);
+			}
+		}
+		//person의 인사 함수를 person2에 붙이고싶다?
+		var person2 = {
+			name: 'Lee',
+		}
+		person.인사(); //Kim
+		person.인사.apply(person2); //Lee
+		person2.인사(); //Uncaught TypeError: person2.인사 is not a function
+
+		//call 설명 (apply, call 비슷함)
+		person.인사.apply(person2, 1); //person.인사(1) 과 같이 파라미터1을 넣는것과 같음
+		person.인사.call(person2, 1);
+
+		//apply는 파라미터를 array로 넣기 가능 (call과 apply의 유일한 차이점!)
+		person.인사.apply(person2, [1, 2]);
+		person.인사.call(person2, 1, 2);
 	</script>
 </body>
 
