@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spread Operator활용방법 1</title>
+</head>
+
+<body>
+	<div></div>
+
+	<script>
+		//Spread Operator 활용방법
+
+		//1. spread operator: 괄호제거 해주는 연산자
+		var 어레이 = ['hello', 'world'];
+		console.log(어레이); //Array
+		console.log(...어레이); //console.log('hello', 'world')와 똑같다 !
+
+		//2. 문자를 해체할 수도 있다
+		var 문자 = 'hello';
+		console.log(...문자); //h e l l o
+		console.log('h', 'e', 'l', 'l', 'o'); //이것과 동일
+
+		//3. 배열 새로 만들기 쉬움
+		var a = [1, 2, 3];
+		var b = [4, 5];
+		var c = [...a, ...b];
+		console.log(c); // [ 1, 2, 3,   4, 5 ]
+
+		//깊은 복사 가능
+
+		var a = [1, 2, 3];
+		var b = a; //얕은 복사(값 공유) - 같은 값을 가리키기 때문
+
+		console.log(a, b); // [1, 2, 3] [1, 2, 3]
+		b[0] = 100;
+		console.log(a, b); // [100, 2, 3] [100, 2, 3]
+
+		var a = [1, 2, 3];
+		var b = [...a]; //깊은 복사(독립된 객체)
+
+		console.log(a, b); //[1, 2, 3] [1, 2, 3]
+		b[0] = 100;
+		console.log(a, b); //[1, 2, 3] [100, 2, 3];
+
+		// Spread Operator 사용처?
+		// 함수소괄호 인자, 오브젝트 중괄호내, 어레이 대괄호내에서 사용
+		// 다른 곳에 쓰면 에러남
+	</script>
+</body>
+
+</html>
