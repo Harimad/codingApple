@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ES6 Promise 간단한 문제</title>
+</head>
+
+<body>
+	<!-- 1번문제 자료-->
+	<img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+
+	<!-- 2번문제 자료 -->
+	<!-- 이것은 jQuery Ajax 편리하니까 jQuery CDN 파일 -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+	<script>
+		//Q1. <img> 이미지 로딩 성공시 특정 코드를 실행하고 싶습니다.
+		//HTML 안에 있는 이미지 로딩이 끝나면 무언가 코드를 실행하고 싶습니다.
+		//이 이미지가 로드가 되면 콘솔창에 성공, 로드가 실패하면 콘솔창에 실패를 출력하고 싶은데
+		// Promise 문법의 then, catch 함수를 사용해 만들고 싶습니다. 어떻게 코드를 짜면 될까요?
+
+		let 이미지로딩 = new Promise(function (성공, 실패) {
+			const 이미지 = document.querySelector('#test');
+			이미지.addEventListener('load', function () {
+				성공();
+			});
+			이미지.addEventListener('error', function () {
+				실패();
+			});
+		});
+
+		이미지로딩.then(function () {
+			console.log('로딩성공');
+		}).catch(function () {
+			console.log('로딩실패');
+		});
+
+
+		//Q2. Ajax 요청이 성공하면 무언가 코드를 실행하고 싶습니다.
+		// https://codingapple1.github.io/hello.txt 라는 경로로 GET 요청을 하면 인삿말이 하나 딸려옵니다.
+
+		// 여기로 GET 요청을 해서 성공하면
+		// Promise의 then 함수를 이용해서 Ajax로 받아온 인삿말을 콘솔창에 출력해주고 싶습니다.
+		// 어떻게 하면 될까요 ?
+		// (jQuery done함수 자체에 Promise 기능이 있기 때문에 코드가 약간 중복도 많고 쓸데없을 수 있지만 연습삼아 해봅시다.)
+
+		//방법 1
+		var 프로미스1 = new Promise(function (성공, 실패) {
+			$.ajax({
+				type: 'GET',
+				url: 'https://codingapple1.github.io/hello.txt',
+			})
+				.done(function (결과) {
+					성공(결과);
+				})
+				.fail(function () {
+					실패();
+				})
+		});
+		프로미스1
+			.then(function (결과) {
+				console.log(`$.ajax 성공: ${결과}`);
+			})
+			.catch(function () {
+				console.log(`$.ajax 실패`);
+			})
+
+		// 방법 2
+		var 프로미스2 = new Promise(function (성공, 실패) {
+			$.get('https://codingapple1.github.io/hello.txt')
+				.done(function (결과) {
+					성공(결과)
+				})
+				.fail(function () {
+					실패();
+				})
+		});
+
+		프로미스2
+			.then(function (결과) {
+				console.log(`$.get Success: ${결과}`);
+			})
+			.catch(function () {
+				console.log(`$.get Fail!`);
+			})
+
+
+
+		//Q3. Promise chaining
+		// 2번 문제에서 https://codingapple1.github.io/hello.txt 라는 경로로 GET 요청을 한 뒤에
+		// .then을 이용해 인삿말을 콘솔창에 출력해보았습니다.
+		// 이번엔 그 직후 https://codingapple1.github.io/hello2.txt 라는 경로로 GET 요청을 또 하고
+		// .then을 이용해 인삿말을 또 출력해보고 싶습니다.
+
+		// 쉽게 말하면
+
+		// 1. hello.txt GET 요청
+		// 2. 그게 완료되면 hello2.txt GET 요청
+		// 3. 그게 완료되면 hello2.txt 결과를 콘솔창에 출력
+		// 을 하고 싶다는 말입니다.
+
+		// 2번에서 만든 코드를 어떻게 업데이트하면 될까요?
+		// 힌트1) 프로미스.then(()=>{둘째실행할거}).then(()=>{셋째실행할거})
+		// 이렇게 then을 여러개 이어붙여 만들어봅시다.
+		// 힌트2) .then()은 당연히 new Promise()로 생성한 프로미스 오브젝트들에 붙일 수 있습니다.
+
+		var 프로미스3 = new Promise(function (성공, 실패) {
+			$.get('https://codingapple1.github.io/hello.txt')
+				.done(function (결과) {
+					성공(결과);
+				})
+		});
+
+		프로미스3
+			.then(function (결과) { //hello1.txt 가져오는 프로미스가 성공하면
+				console.log(`$.get 성공: ${결과}`);
+
+				var 프로미스4 = new Promise(function (성공, 실패) { //그럼 이제 hello2.txt도 가져와주세요
+					$.get('https://codingapple1.github.io/hello2.txt')
+						.done(function (결과) {
+							성공(결과);
+						})
+				});
+				return 프로미스4; //then을 여러개 붙여서 뭔가 단계적으로 실행할 수 있습니다.
+			})			//하지만 그냥 붙이면 안되고 then 함수는 new Promise()로 부터 생성된 오브젝트에만 붙일 수 있습니다. return 해주면 그 자리에 new Promise()가 남아서 거기 뒤에 .then을 붙일 수 있습니다
+			.then(function (결과) {
+				console.log(`$.get $.get 성공 ${결과}`); // hello2.txt 가져오면 콘솔창에 출력해주세요
+			})
+
+			// 흐름은 이렇습니다.
+			// 1. 첫프로미스가 성공하면 then() 안의 코드를 실행시켜줍니다.
+			// 2. 근데 거기 안에는 프로미스4가 있습니다. 프로미스4가 성공하면
+			// 3. 뒤에 있는 then() 안의 코드를 실행시켜줍니다. ( 단계적으로 코드를 실행 )
+	</script>
+
+</body>
+
+</html>
