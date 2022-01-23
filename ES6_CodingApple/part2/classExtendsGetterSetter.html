@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class extends getter setter 연습문제 5</title>
+</head>
+
+<body>
+	<script>
+		// 1. 직접 class 구조 만들어보기
+
+		// var 강아지1 = { type: '말티즈', color: 'white' };
+		// var 강아지2 = { type: '진돗개', color: 'brown' };
+		// class 만들어 강아지 오브젝트 뽑아보기
+
+		class Dog {
+			constructor(type, color) {
+				this.type = type;
+				this.color = color;
+			}
+		}
+		var 강아지1 = new Dog('말티즈', 'white');
+		var 강아지2 = new Dog('진돗개', 'brown');
+		console.log(강아지1);
+		console.log(강아지2);
+
+
+		// 2. 이번엔 고양이관련 object 만들고 싶습니다
+		// var 고양이1 = { type: '코숏', color: 'white', age: 5};
+		// var 고양이2 = { type: '러시안블루', color: 'brown', age: 2};
+
+		class Cat extends Dog {
+			constructor(type, color, age) {
+				super(type, color);
+				this.age = age;
+			}
+		}
+
+		var 고양이1 = new Cat('코숏', 'white', 5);
+		var 고양이2 = new Cat('러시안블루', 'brown', 2);
+
+		console.log(고양이1);
+		console.log(고양이2);
+
+
+		//3. 고양이와 강아지 object들에 기능을 하나 추가하고 싶습니다.
+
+		// 모든 고양이와 강아지 object들은 .한살먹기() 라는 함수를 사용할 수 있습니다.
+		// (1) 한살먹기 함수는 강아지 class로부터 생성된 오브젝트가 사용되면 콘솔창에 에러를 출력
+		// (2) 한살먹기 함수는 고양이 class로부터 생성된 오브젝트가 사용되면 현재 가지고있는 age속성에 1을 더해주는 기능을 실행해야합니다
+		// 한살먹기 함수는 어떻게 만들까요?
+
+		//codingapple 답 - 신박함.
+		class Dog {
+			constructor(타입, 칼라) {
+				this.type = 타입;
+				this.color = 칼라;
+			}
+			한살먹기() {
+				if (this instanceof Cat) {
+					this.age++
+				}
+			}
+		}
+
+		//내가 한 답
+		Animal.prototype.한살먹기 = function () {
+			if (this.age) {
+				return this.age + 1;
+			} else {
+				console.log('age가 없습니다: Error!');
+			}
+		}
+
+		강아지1.한살먹기(); //age가 없습니다: Error!
+		강아지2.한살먹기(); //age가 없습니다: Error!
+		console.log(고양이1.한살먹기()); //6
+		console.log(고양이2.한살먹기()); //3
+
+		// 4. get/set을 이용해 봅시다
+		// 자바스크립트로 간단한 게임 기능을 가진 오브젝트를 뽑는 class를 만들고 싶습니다.
+		// 다음 조건에 따라 class를 만들어보세요. class 이름은 Unit이라고 합시다.
+
+		// (1) 모든 Unit의 인스턴스는 공격력, 체력 속성이 있으며 기본 공격력은 5, 기본 체력은 100으로 설정되어 있어야 합니다.
+		// (2) 모든 Unit의 인스턴스는 전투력을 측정해주는 battlePoint라는 getter가 있습니다.
+		// console.log(인스턴스.battlePoint) 이렇게 사용하면 현재 공격력과 체력을 더한 값을 콘솔창에 출력해주어야 합니다.
+		// (3) 모든 Unit의 인스턴스는 heal이라는 setter가 있습니다.
+		// 인스턴스.heal = 50 이렇게 사용하면 체력 속성이 50 증가해야합니다.
+		// *인스턴스는 class로부터 새로생성되는 오브젝트를 뜻합니다.
+
+		class Unit {
+			constructor() {
+				this.attack = 5;
+				this.health = 100;
+			}
+			get battlePoint() {
+				return this.attack + this.health;
+			}
+			set heal(point) {
+				this.health += point;
+			}
+		}
+
+		var robot1 = new Unit();
+
+		console.log(robot1);
+		console.log(robot1.battlePoint); // 105
+		robot1.heal = 50;
+		console.log(robot1);
+		console.log(robot1.battlePoint); // 155
+
+
+		// 5. get/set을 이용해봅시다 2
+		// 다음과 같은 오브젝트가 있습니다.
+		// var data = {
+		//   odd : [],
+		//   even : []
+		// }
+		// (1) data 오브젝트안에 setter 역할 함수를 하나 만들어보십시오.
+		//   setter 함수에 1,2,3,4 이렇게 아무 자연수나 파라미터로 입력하면 홀수는 odd, 짝수는 even이라는 속성에 array 형태로 저장되어야합니다.
+		// (2) data 오브젝트안에 getter 역할 함수를 하나 만들어보십시오.
+		//   getter 함수를 사용하면 odd, even에 저장된 모든 데이터들이 숫자순으로 정렬되어 출력되어야 합니다.
+
+		//coding apple 답
+		var data = {
+			odd: [],
+			even: [],
+			// setter함수 : function(...숫자들) { //메서드로 저장
+			//   숫자들.forEach((a) => {
+			//     if (a % 2 == 1) {
+			//       this.odd.push(a)
+			//     } else {
+			//       this.even.push(a)
+			//     }
+			//   })
+			// },
+			set setter함수(숫자들) { //setter로 저장
+				[...숫자들].forEach(a => {
+					if (a % 2) this.odd.push(a);
+					else this.even.push(a);
+				})
+			},
+			get getter함수() {
+				return [...this.odd, ...this.even].sort()
+			}
+		}
+		data.setter함수 = [1, 2, 3, 4, 5]; //setter로 값 저장
+		// data.setter함수(1,2,3); //메서드로 저장
+		console.log(data.getter함수);
+		// 내가 한 답
+		class Data {
+			constructor() {
+				this.odd = [];
+				this.even = [];
+			}
+			get getOdd() {
+				return this.odd
+			}
+			get getEven() {
+				return this.even
+			}
+			get getData() {
+				return [...this.odd, ...this.even].sort()
+			}
+
+			set setData(data) {
+				if (Array.isArray(data)) {
+					data.forEach(val => {
+						if (val % 2) this.odd.push(val);
+						else this.even.push(val);
+					})
+				} else if (typeof data === string) {
+					if (val % 2) this.odd.push(data);
+					else this.even.push(data);
+				}
+			}
+		}
+
+		var data1 = new Data;
+		// console.log(data1);
+		data1.setData = [1, 2, 3, 4, 5];
+		console.log(data1);
+		console.log(`data1.getOdd: ${data1.getOdd}`); //[1,3,5];
+		console.log(`data1.getEven: ${data1.getEven}`); //[2, 4];
+	</script>
+</body>
+
+</html>
