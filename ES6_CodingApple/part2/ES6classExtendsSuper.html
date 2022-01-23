@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class extends 상용하기</title>
+</head>
+
+<body>
+	<script>
+		class 할아버지 {
+			constructor(name) {
+				this.성 = 'Kim';
+				this.이름 = name;
+			}
+			sayHi() {
+				console.log('안녕 나는 할아버지')
+			}
+		}
+
+		class 아버지 extends 할아버지 {
+			constructor(name) {
+				super(name); //super함수 : extends로 상속중인 부모 class의 constructor()"를 의미
+				this.나이 = 50;
+			}
+			sayHi2() {
+				console.log('안녕 나는 아버지');
+				super.sayHi(); //'안녕 나는 할아버지'
+				//윗문장 : 할아버지.prototype.sayHi()와 똑같다
+			}
+		}
+
+		var a = new 아버지('만수');
+		// a 변수 내용은?
+		// 1. a라는 변수는 아버지라는 class로부터 새로 생성된 오브젝트입니다.
+		// 2. 그래서 할아버지가 가지고 있던 성, 이름 그리고 아버지가 가지고 있던 나이를 전부 물려받았습니다.
+		// 3. 그리고 this.이름 자리에는 '만수'를 넣어 실행했습니다.
+		console.log(a); //아버지 {성: 'Kim', 이름: '만수', 나이: 50}
+
+		a.sayHi2(); //안녕 나는 아버지 \n 안녕 나는 할아버지
+	</script>
+</body>
+
+</html>
