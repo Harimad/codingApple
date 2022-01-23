@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ES6 Promise</title>
+</head>
+
+<body>
+	<script>
+		//Promise 생김새 - 실행완료시 then, 실패시 catch를  구성하는 디자인 패턴
+
+		var 프로미스911 = new Promise();
+
+		프로미스911
+			.then(function () { })
+			.catch(function () { });
+
+		// Promise가 콜백함수보다 좋다고 하는 이유
+		// 1. 콜백함수와는 다르게 순차적으로 실행 시 코드가 옆으로 길어지지 않는다.
+		//	then 함수를 붙여서 순차적으로 실행시키기 때문이다.
+		// 2. 콜백함수는 불가능한 '실패시 특정코드 실행~' 이걸 가능하게 해줌.(catch);
+
+		//Promise의 정확한 뜻과 사용법
+		//성공하면 then(), 실패하면 catch()를 실행해주세요~
+
+
+		//예시1. 힘든 수학연산 성공 후에 특정 코드를 실행하려면?
+
+		var 프로미스1 = new Promise(function (성공, 실패) {
+			var 어려운연산 = 1 + 1;
+			성공(어려운연산); //성공했으니 then 으로가서 콜백함수 실행
+			// 실패();
+		});
+
+		프로미스1.then(function (어려운연산) {
+			console.log(`어려운 연산에 성공했습니다. 정답은: ${어려운연산}`);
+		}).catch(function () {
+			console.log(`수학 초보시네요`);
+		});
+
+
+		//예시2. 1초 대기 성공 후에 특정 코드를 실행하려면?
+
+		var 프로미스2 = new Promise(function (성공, 실패) {
+			setTimeout(function () {
+				성공();
+			}, 1000);
+		});
+
+		프로미스2.then(function () {
+			console.log('1초 대기 성공');
+		}).catch(function () {
+			console.log('대기 실패');
+		});
+
+
+		//Promise 2가지 특징
+		// 1. new Promise()로 생성된 변수의 현재상태는 3가지 이다
+		// 성공/실패 판정 전: pending, 성공 후: resolved, 실패 후: rejected
+
+		// 2. Promise는 동기 -> 비동기 해주는 코드가 아니다
+		// Promise는 비동기 실행과 관련이 없다
+		// 일종의 디자인 패턴일 뿐이다
+		// 그냥 원래 JS는 동기적으로 실행되다가 비동기 실행 지원하는 함수를 만나면 비동기 실행할 뿐이다
+	</script>
+</body>
+
+</html>
