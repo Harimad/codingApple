@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>동기/비동기처리와 콜백함수</title>
+</head>
+
+<body>
+	<script>
+		// 동기 / 비동기처리
+
+		console.log(1);
+		setTimeout(function () { }, 1000);
+		console.log(2); //1과 2가 콘솔창에 동시에 출력 그리고 setTimeout돌아감
+
+		// 자바스크립트 실행머신인 웹브라우저는
+		// 이런 특수한 코드들을 발견하면 약간 제쳐두고 다른 코드부터 실행하려고 합니다.
+		// 그래서 setTimeout() 을 제껴두고 그 밑에 있는 console.log(2)라는 코드 부터 실행하는 것이죠
+		// 이런 처리방식을 바로 비동기(asynchronous) 라고 합니다. (웹브라우저 덕분)
+
+		//setTimeout, addEventListener, ajax관련 함수들은 1초대기, 클릭대기 이런걸 하는 코드들인데
+		//이런 코드들의 특징은.. 읽는 시점과 동작 시점이 차이가 있습니다.
+
+		// 자바스크립트를 실행하고 해석하는 크롬쨩은 이런 특별한 코드들을 만나면
+		// 1. 잠깐 대기실에 제껴두고 2. 준비가 완료되면 다시 실행시킵니다.
+
+
+		//콜백함수를 이용한 순차적 실행
+		console.log(1);
+		setTimeout(function () {
+			console.log(2);
+		}, 1000);
+		console.log(3); //1, 3 출력 -> 1초 후에 2 출력
+
+		//자바스크립트는 비동기상황 등에서 코드를 순차적으로 실행하고 싶을 때 콜백함수(함수안의 함수)를 적극 활용
+		function 첫째함수(콜백함수) {
+			console.log(1)
+			콜백함수();
+		}
+		function 둘째함수() {
+			console.log(2);
+		}
+
+		첫째함수(둘째함수);
+
+
+		//순차적으로 실행하려고 콜백함수를 여러개 사용하면 단점 -> 코드가 옆으로 길어짐
+		첫째함수(function () {
+			둘째함수(function () {
+				셋째함수(funciton() {
+					......
+				});
+			});
+		});
+		// 이런거 보기 싫으면 ES6 신문법인 Promise 사용
+		첫째함수().then(function () {
+			그 다음에 실행할거
+		}).then(function () {
+			또 그 다음에 실행할거
+		});
+	</script>
+</body>
+
+</html>
