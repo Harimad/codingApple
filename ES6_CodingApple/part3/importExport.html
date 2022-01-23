@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>import export for module development</title>
+</head>
+
+<body>
+	<script type="module">
+		// 자바스크립트 코드가 길어지면 다른 파일로 쪼개는게 좋은 관습
+		// 다른 파일로 쪼개놓고 그걸 첨부해서 사용하는 방법
+		// ES6 import/export를 쓰시면 내가 원하는 변수, 함수, class만 다른 파일로 보낼 수 있다
+		//(참고) import 해온 변수, 함수는 사용은 가능하지만 수정은 불가능합니다. read-only 이다.
+
+		//(1) export default / import 를 쓰면
+
+		// (library.js)
+
+		// var a = 10;
+		// export default a; //변수명 넣기
+
+		import a from './library.js'; //import 변수명아무거나 frm 경로
+		console.log(a); // 10
+
+
+		//(2) 여러개를 export 할 수도 있습니다
+
+		// (library.js)
+
+		// var b = 20;
+		// var c = 30;
+		// export { b, c };
+		import { b, c } from './library.js';
+		console.log(b, c); //20, 30
+
+		//export 키워드로 내보낸 것들을 import 할땐
+		//import {변수명1, 변수명2 ...} from 경로 // 변수명을 똑같이 해줘야함
+
+		// export VS export default ?
+		// - export default는 한번만 쓸 수 있고 import시엔 변수명을 새롭게 작명가능
+		// - export는 {변수명1, 변수명2 ...} 이렇게 담아야하고 import 할 때도 정확히 변수명을 써줘야한다
+
+
+		//(3) 그럼 export와 export default 동시에 사용하면?
+
+		import a, { b, c } from './library.js'; // export default 한건 꼭 맨 왼쪽에 써야함
+		console.log(a, b, c); //10 20 30
+
+
+		//(4) 변수명이 마음에 안들면 as로 새로 짓자
+		// (library.js)
+
+		// var a = 10;
+		// var c = 30;
+		// export {a};
+		// export default c;
+		import c as 간지, { a as 폭발 } from 'library.js';
+		console.log(간지);
+		console.log(폭발);
+
+
+		//(5) import할 때 변수들이 너무 많으면 * 기호를 씁시다
+		// (library.js)
+
+		// var a = 10;
+		// var b = 20;
+		// var c = 30;
+		// export {a,b};
+		// export default c;
+
+		// ------------------------
+		import c, {* as 변수모음} from 'library.js';
+		console.log(변수모음.a);
+		console.log(c);
+
+	</script>
+</body>
+
+</html>
