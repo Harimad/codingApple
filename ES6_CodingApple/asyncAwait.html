@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Promise 싫으면 async/await 사용</title>
+</head>
+
+<body>
+
+	<script>
+		//(ES8) async, await이라는 키워드인데 각각 Promise와 then을 매우 쉽게 만들어주는 문법
+
+		//※ async 키워드를 쓰면 Promise 오브젝트가 절로 생성된다.
+		//new Promise() 할 필요 없다.
+		//이 키워드는 function 선언 앞에만 쓸 수 있다.
+
+		async function 더하기() {  // 이 함수 자체가 Promise가 된다 -> (함수를 실행하면 그 자리에 Promise 인스턴스 (new Promise() 로 만든 오브젝트)가 남는다
+			return (1 + 1);  // 그래서 이 함수 실행 뒤에 then(promise뒤에붙음)을 붙을 수 있다.
+		}
+
+		더하기().then(function (결과) {
+			console.log(`더하기 성공 ${결과}`); // 더하기 성공 2
+		})
+
+
+		//then() 함수가 귀찮다면 await 키워드를 쓸 수 있다
+		// async 키워드를 쓴 함수 안에서는 await을 사용가능
+		// await은 프로미스.then() 대체품(더 간단)
+
+		async function 빼기() {
+			var 어려운연산 = new Promise((성공, 실패) => {
+				var 결과 = 2 - 1;
+				성공(결과); //파라미터가
+			});
+			var 결과 = await 어려운연산; // 여기 변수에 저장된다.
+			console.log(결과); // 1
+		}
+		빼기();
+
+
+		//Promise가 실패할 경우
+		//await 어려운연산 코드가 에러나고 코드실행 멈추기 때문에 더 특별한 방법 필요
+		async function 곱하기() {
+			var 핵어려운연산 = new Promise((성공, 실패) => {
+				실패();
+			});
+			try {
+				var 결과 = await 핵어려운연산
+			} catch {
+				//핵어려운연산 Promise가 실패할 경우 실행
+			}
+		}
+	</script>
+
+
+
+	<!-- 예제 : <button>을 누르면 성공하는 Promise 만들기 -->
+	<button>버튼</button>
+	<script>
+		var 버튼프로미스 = new Promise((성공, 실패) => {
+			document.querySelector('button').addEventListener('click', function () {
+				성공('성공했어요');
+			});
+		})
+		// 버튼프로미스.then(function() {}) 이렇게 해도되고 아래처럼 해도됨
+		async function 버튼누르기() {
+			var 결과 = await 버튼프로미스; //await은 async 안에 있어야함.
+			console.log(결과);
+		}
+
+		버튼누르기();
+
+		// 1. 일단 위의 버튼을 누르면 성공판정을 내리는 Promise를 만들었습니다.
+		// 그건 별거 아닙니다.
+		// 2. 근데 이제 그게 성공하면 console.log()를 해주는 코드를 짜려고 봤더니 then을 쓰기 싫어서
+		// await 프로미스;  이렇게 작성했습니다.
+		// 3. 근데 await 을 쓰려면 async functinon 안에서만 쓸 수 있댔죠?
+		// 그래서 await 프로미스; 코드를 async function을 하나 만들어서 감쌌을 뿐입니다.
+
+	</script>
+</body>
+
+</html>
