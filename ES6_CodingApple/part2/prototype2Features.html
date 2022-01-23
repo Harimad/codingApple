@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>prototype features</title>
+</head>
+
+<body>
+	<script>
+		//prototype은 여러가지 특징
+
+		//1. prototype은 constructor 함수에만 몰래 생성
+		// - 내가 일반 object, array 이런거 만들어도 거기엔 prototype이 없습니다
+		// - 일반 object 같은걸 상속하고 싶으면 어떻게 하냐?
+		// - constructor 함수를 만들던가 |  Object.create() | class 셋 중에 하나 쓰면됩니다
+
+		//2. 내 부모님 유전자(prototype)를 찾고 싶다면 __proto__를 출력
+		// __proto__는 부모의 prototype(유전자)을 의미 , 즉, __proto__는 부모유전자다.
+		function 기계() {
+			this.name = 'Kim';
+			this.age = 15;
+		}
+		var 학생1 = new 기계();
+		console.log(학생1.prototype); // undefined	//학생1의 유전자는 없음
+		console.log(학생1.__proto__); // f 기계
+		console.log(기계.prototype); // f 기계	//똑같이 나옴. __proto__는 부모 유전자 찾기, prototype은 내 유전자 찾기
+
+		//3. __proto__를 직접 등록하면 object끼리 상속기능을 구현가능합니다
+		//부모 유전자를 직접 설정가능
+		var 부모 = { name: 'Kim' };
+		var 자식 = {};
+
+		자식.__proto__ = 부모;
+		console.log(자식); // {}
+		console.log(자식.__proto__); // {name: 'Kim'} <- 부모
+		console.log(자식.name); //Kim
+	</script>
+</body>
+
+</html>
