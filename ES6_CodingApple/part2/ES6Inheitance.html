@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ES6 class for constructor</title>
+</head>
+
+<body>
+	<script>
+		// 상속가능한 함수를 추가하려면 어떻게 해야할까요?
+		// 예전에 sayHi 이런거 하면서 배웠던 두가지 방법이 있습니다.
+		// 1. 함수를 this.sayHi 이렇게 constructor 안에 추가하는 방법과
+		// 2. 기계의 prototype에 추가하는 방법이 있었죠?
+
+		//1번 - 새로 생성되는 자식은 sayHi()함수를 직접 가집니다.
+		class 부모1 {
+			constructor() {
+				this.name = 'Kim';
+				this.sayHi = function () { console.log('111') }
+			}
+		}
+		var 자식1 = new 부모1();
+		console.log(자식1); //부모1 {name: 'Kim', sayHi: ƒ}
+		자식1.sayHi(); // 111
+
+		//2번 - prototype(부모유전자)에 추가하기 -> 자식은 sayHi()함수를 직접 안가집니다.
+		class 부모2 {
+			constructor() {
+				this.name = 'Kim';
+			}
+			sayHi() {
+				console.log('222')
+			}
+		}
+
+		var 자식2 = new 부모2();
+		console.log(자식2); //부모2 {name: 'Kim'}
+		자식2.sayHi(); // 222
+	</script>
+</body>
+
+</html>
