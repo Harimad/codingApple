@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>getter setter</title>
+</head>
+
+<body>
+	<script>
+		// getter, setter 문법 사용하는 이유?
+
+		// 1. 오브젝트 내의 함수들을 괄호없이 쓸 수 있게 만들어주는 키워드
+
+		// 2. 데이터의 무결성을 보존하기 위해 쓰는 키워드
+		//	- 원본 데이터는 immutable 해야한다.
+		//	- 데이터는 수정하거나 출력할 때 직접 원본 데이터 접근X
+		//	- 함수로 간접적으로 다루는게 대세, 일종의 코딩테크닉이다.
+
+		var 사람 = {
+			name: 'Kim',
+			age: 30,
+			set setAge(나이) { //set은 매개변수가 무조건 1개 있어야함.
+				this.age = parseInt(나이);
+			},
+			get nextAge() { //get은 매개변수가 없어야함.
+				return this.age + 1;
+			}
+		}
+
+		사람.setAge = 40; // set 키워드 추가하면 이런식(메서드->프로퍼티화)으로 함수 사용가능
+
+		console.log(사람.nextAge); // 41
+
+		// get / set 사용 기준?
+		// 데이터를 뽑아주는, 가져와주는, get 해주는 함수들은 get 사용
+		// 데이터를 입력해주는, 수정해주는, set 해주는 함수들은 set 사용
+
+
+		//class 에서 get/set 사용하기
+		class 휴먼 {
+			constructor() {
+				this.name = 'Park';
+				this.age = 20;
+			}
+			get nextAge() {
+				return this.age + 1
+			}
+			set setAge(나이) {
+				this.age = 나이;
+			}
+		}
+		var 휴먼1 = new 휴먼();
+
+		console.log(휴먼1.nextAge); // 21
+		휴먼1.setAge = 100;
+		console.log(휴먼1.age); // 100
+	</script>
+</body>
+
+</html>
