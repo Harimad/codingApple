@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ES5방식의 상속기능: create</title>
+</head>
+
+<body>
+	<script>
+		var 부모 = { name: 'Kim', age: 50 };
+		var 자식 = Object.create(부모);
+
+		console.log(자식.age); //50나옴
+
+		자식.age = 20;
+
+		console.log(자식.age); //20 나옴
+
+		var 손자 = Object.create(자식);
+
+		console.log(손자.age); // 20
+
+		//동작원리
+		// 1. 손자에 age가 있는지 확인하고
+		// 2. 없으면 부모 prototype에 있는지 확인하고
+		// 3. 거기도 없으면 부모의 부모 prototype에 있는지 확인하고..
+		// 그렇게 하나씩 확인해서 젤 가까운 age를 출력시키기 때문입니다
+	</script>
+</body>
+
+</html>
