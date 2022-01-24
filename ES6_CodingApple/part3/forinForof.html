@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>for ... in , for ... of</title>
+</head>
+
+<body>
+	<script>
+		//for ... in
+
+		//for in 반복문은 Object에 사용함
+		//Object 자료형에 저장된 자료들을 하나씩 꺼내고 싶을 때 사용
+		const 오브젝트1 = { a: 1, b: 2, c: 3 };
+
+		for (const key in 오브젝트1) {
+			console.log(`${key} : ${오브젝트1[key]}`);
+		}
+		// "a: 1"
+		// "b: 2"
+		// "c: 3"
+
+		//for in 반복문의 특징 1. enumerable한 것만 출력
+
+		var object = { name: 'Kim', age: 30 };
+		console.log(Object.getOwnPropertyDescriptor(object, 'name'));
+		//{value: 'Kim', writable: true, enumerable: true, configurable: true}
+		//여기서 enumerable이라는게 있는데, 이게 true인 자료들만 for in 반복문이 출력할 수 있다
+
+
+		//for in 반복문의 특징 2. 부모의 prototype(유전자)에 저장된 것도 출력
+
+		class 부모 {
+
+		}
+		부모.prototype.name = 'Park';
+
+		var 오브젝트2 = new 부모();
+
+		for (var key in 오브젝트2) {
+			console.log(`${key} : ${오브젝트2[key]}`); //name : Park
+		}
+		//Park이라는 자료는 부모가 가지고 있는 것인데도 출력해준다.
+		//이게 단점이다
+		//부모껄 출력하기 싫다면 아래처럼 한다
+		for (var key in 오브젝트2) {
+			if (오브젝트2.hasOwnProperty(key)) {
+				console.log(오브젝트2[key]);  // 출력안함
+			}
+		}
+		//오브젝트.hasOwnProperty()라는 함수는
+		//오브젝트가 이 key값을 직접 가지고 있냐라고 물어보는 함수 이다
+		// 갖고 있으면 T , 없으면 F 리턴한다.
+		//즉, 내가 가진 것만 반복 시키려면 이걸 꼭 써줘야한다.
+
+
+
+		// for of 반복문
+
+		// array, 문자, arguments, NodeList, Map, Set 이라는 자료형에 적용할 수 있는 반복문
+		var 어레이 = [2, 3, 4, 5];
+		for (var 자료 of 어레이) {
+			console.log(자료);
+		}
+
+		// 정확히 말하면 iterable인 자료형들에만 적용가능한 반복문
+		console.log([1, 2, 3][Symbol.iterator]()); //Array Iterator {}
+		console.log('abc'[Symbol.iterator]()); //StringIterator {}
+
+
+		//Q1. for of 반복문을 이용해서 2단부터 9단까지의 구구단을 콘솔창에 한번 출력
+
+		let 데이터 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+		for (var i of 데이터) { // 2 * 1,2,3,4,5,6,7,8,9 ... 9 * 1,2,3....
+			if (i == 1) i = 2;
+			for (var j of 데이터) {
+				// console.log(`${i} * ${j} = ${i * j}`);
+			}
+		}
+
+
+		//Q2. 어떤 놈이 key값 마지막 부분에 오타를 섞어놨습니다.
+		//key값 마지막에 한자릿수 숫자가 섞여있으면 그걸 다 제거하고 싶습니다.
+
+		var products = [
+			{
+				name1: 'chair',
+				price1: 7000,
+			},
+			{
+				name2: 'sofa',
+				price: 5000,
+			},
+			{
+				name1: 'desk',
+				price3: 9000,
+			},
+		];
+		// (예시) array안의 object안에 들어있는
+		// name1 : 'chair' 이게
+		// name : 'chair' 이렇게 숫자만 깔끔하게 없어져야합니다.
+
+
+		// 먼저 하드코딩 연습
+		let 오브젝트 = {
+			name1: 'chair'
+		}
+		//마지막 글자를 숫자로 변환해서 NaN이 안나오면 (숫자라면?)
+		if (isNaN(parseInt('name1'.slice(-1))) == false) {
+			let newValue = 오브젝트['name1'];
+			let newKey = 'name1'.slice(0, -1); //맨 뒷 문자 제거
+			오브젝트[newKey] = newValue;
+
+			delete 오브젝트['name1'] //원래 있던 key 제거
+		}
+		console.log(오브젝트); //{name: 'chair'}
+
+
+		//정답
+		let newValue;
+		let newKey;
+
+		for (var item of products) {
+			console.log(item);
+			for (var key in item) {
+				console.log(`key : ${key}, value: ${item[key]}`);
+
+				if (isNaN(parseInt(key.slice(-1))) == false) {
+					newValue = item[key];
+					newKey = key.slice(0, -1);
+					item[newKey] = newValue;
+					delete item[key];
+				}
+			}
+		}
+
+		console.log(products);
+		// (3) [{…}, {…}, {…}]
+
+		// 0: {name: 'chair', price: 7000}
+		// 1: {price: 5000, name: 'sofa'}
+		// 2: {name: 'desk', price: 9000}
+		// length: 3
+		// [[Prototype]]: Array(0)
+	</script>
+</body>
+
+</html>
