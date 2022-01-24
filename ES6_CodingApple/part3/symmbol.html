@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Symbol은 왜 있죠?</title>
+</head>
+
+<body>
+	<script>
+		// Symbol은 Object자료형에 비밀스런 key값을 부여하고싶을 때 쓴다
+
+		var 심볼 = Symbol('설명'); //Symbol 자료형 만드는 법
+
+		var weight = Symbol('내 시크릿 몸무게 임');
+		var height = Symbol('내 시크릿 키 임');
+		var 군복무 = Symbol('군대 다녀옴?')
+
+		var person = { name: 'Kim', [군복무]: '다녀옴' }; //[심볼 변수]: value 이렇게도 Symbol 설정 가능
+		person.weight = 100; //일반 프로퍼티 저장
+
+		person[weight] = 200; //symbol 저장 -> person[심볼명] = 넣을자료;
+		person[height] = 180; //""
+
+		console.log(person);
+		// name: "Kim"
+		// weight: 100
+		// Symbol(군대 다녀옴?): "다녀옴"
+		// Symbol(내 시크릿 몸무게임): 200
+		// Symbol(내 시크릿 키 임): 180
+
+		for (var key in person) {
+			console.log(person[key]);
+		}
+		//Kim
+		//100
+
+		//Symbol은 반복문에서 출력안됨(enumerable X)
+
+
+
+
+		////Symbol 특징 3 가지
+
+		//Symbol 특징 1 - 심볼은 유니크 하다
+
+		var a = Symbol('설명1');
+		var b = Symbol('설명1');
+		console.log(a == b, a === b); // false false
+
+
+		//Symbol 특징 2 -  Symbol.for()로 전역 심볼을 만들 수 있다.
+
+		var c = Symbol.for('설명1'); // 기존에 '설명1'이 있다면
+		var d = Symbol.for('설명1'); // var d = c 와 같다!!
+		console.log(c == d, c === d); // true true, 같은 심볼이 된다.
+
+		//Symbol 특징 3 - 기본 내장 Symbol들이 있다.
+		//심볼값은 '객체[심볼변수]' 이렇게 값을 뽑아낸다.
+		var 어레이 = [2, 3, 4];
+		어레이[Symbol.iterator]; //JS가 array에 몰래 집어넣는 기본 Symbol 이다
+		//이것도 심볼이구나 하고 이해만 하고 넘어가길..
+		console.log(어레이[Symbol.iterator]()); // Array Iterator {}
+	</script>
+</body>
+
+</html>
