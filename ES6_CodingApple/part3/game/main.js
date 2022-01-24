@@ -1,9 +1,11 @@
+// 네모 캔버스 그리기
 var canvas = document.querySelector('#canvas');
 var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth - 100;
 canvas.height = window.innerHeight - 100;
 
+// 공룡 구현
 var dino = {
 	x : 10,
 	y : 200,
@@ -15,7 +17,7 @@ var dino = {
 	}
 }
 
-
+// 선인장 구현
 class Cactus {
 	constructor() {
 		this.x = 500;
@@ -29,20 +31,18 @@ class Cactus {
 	}
 }
 
-var timer = 0;
-var cactus여러개 = [];
+var timer = 0; //시간 저장
+var cactus여러개 = []; //선인장 여러개 담을 배열 생성
 
-//애니메이션 만들려면 1초에 60번 dino x값 ++해줘야함
+//애니메이션 만들려면 1초에 60번 dino x값 ++해줘야함 -> requestAnimationFrame함수 사용
 
 function 프레임마다실행할거() { //1초에 60번 함수 실행됨
 	requestAnimationFrame(프레임마다실행할거);
 	timer++;
 
-	//잔상없애기위해 canvas비우기
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height); //잔상없애기위해 canvas비우기
 
-	//선인장 그리기, 2~3초에 한번 이거 실행
-	if (timer % 120 === 0) { //120프레임(2초)마다 장애물생성  //144프레임 모니터는 144나눔(1초)
+	if (timer % 120 === 0) { //120프레임(2초)마다 장애물생성  //144프레임 모니터는 1초당 144나눔
 		var cactus = new Cactus();
 		cactus여러개.push(cactus);
 	}
