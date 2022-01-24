@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Components : 커스텀 HTML 태그</title>
+</head>
+
+<body>
+	<custom-input name="팀리"></custom-input>
+
+	<script>
+		//html 태그(div ...)덩어리를 커스텀 태그로 치환해서 쓸 수 있음
+		//Web Components 문법 - JS 문법으로 구현할 수 있는 브라우저 기본 기능임
+		//긴 HTML도 함수처럼 재사용 가능하다 (확장성, 생산성)
+		//but React, Vue가 더 좋음(더 다양한 기능)
+		//Web Components 기능중에 쉽게 쓸 수 있게 도와주는 라이브러리 : Lit, Stencil 등 이 있다.
+
+		//<커스텀태그>로 길고 복잡한 HTML 축약하는 법
+		//this는 instance 인 <custom-input>을 가리킴
+		class 클래스 extends HTMLElement {
+			connectedCallback() { //커스텀 html 태그 만드는 법
+				let name = this.getAttribute('name');
+				this.innerHTML = `<label> ${name} 인풋 이에요</label><input></input>`
+			}
+
+			static get observedAttributes() { //React의 props와 비슷하다. 값 변경되면 재랜더링 해준다.
+				return ['name'] // name이라는 attribute 바뀌는지 감시해주세요
+			}
+			attributeChangedCallback() { // 값 바뀌면 이거 실행해줌
+				console.log(this.getAttribute('name'));
+				this.innerHTML = `<label> ${name} 인풋 이에요</label><input></input>` // React, Vue랑 비슷한 재랜더링 기능구현 방법임
+			}
+		}
+		//컴포넌트 등록
+		customElements.define('custom-input', 클래스); //define(()에 작명, class 형태로 html 넣기)
+	</script>
+</body>
+
+</html>
