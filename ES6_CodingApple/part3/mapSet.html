@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Map, Set 자료형</title>
+</head>
+
+<body>
+	<script>
+		//Map 자료형은 자료간의 연관성을 표현하기 위해 쓴다.
+		var person = new Map();
+
+		person.set('name', 'Kim');
+		person.set('age', 20);
+		console.log(person); //Map(2) {'name' => 'Kim', 'age' => 20} // 자료의 연관성을 위해 화살표를 쓴다.
+
+		//Obejct 자료형 : 자료 이름으로 글자만 가능
+		//Map 자료형 : 모두 가능(숫자, 문자, 배열 etc...). map의 존재이유이다.
+
+		//Map 자료 꺼내는 법
+		console.log(person.get('age')); //20
+
+		//자료 지우는 법
+		person.delete('age');
+		console.log(person); //Map(1) {'name' => 'Kim'}
+
+		//자료 크기 보는 법
+		console.log(person.size); // 1
+
+		//map 과 같이 쓰는 반복문
+		for (var key of person.keys()) {
+			console.log(key); // name
+		}
+
+		//Map 자료형에 직접 자료 집어넣을 때 //대괄호 2번 씀.
+		var person2 = new Map([
+			['name', 'Kim'],
+			['age', 20]
+		]);
+
+		for (var key of person2.keys()) {
+			console.log(key); //name age
+		}
+
+
+		//ES6
+		//Set 자료형 - 중복자료를 허용하지 않는 유사 Array
+
+		var 출석부 = ['john', 'tom', 'andy', 'tom']; //실수로 tom 2번 들어감
+		console.log(출석부); //(4) ['john', 'tom', 'andy', 'tom']
+
+		var 출석부2 = new Set(['john', 'tom', 'andy', 'tom']); //중복제거
+		console.log(출석부2); //Set(3) {'john', 'tom', 'andy'}
+
+		//값 추가
+		출석부2.add('sally');
+		console.log(출석부2); //Set(4) {'john', 'tom', 'andy', 'sally'}
+
+		//값 제거
+		출석부2.delete('sally');
+		console.log(출석부2); //Set(3) {'john', 'tom', 'andy'}
+
+		//값 유무 확인
+		console.log(출석부2.has('sally')); //false
+
+		//값 사이즈 확인
+		console.log(출석부2.size); // 3
+
+
+
+		//Set 자료형 < - > Array 자료형
+		//Array의 중복자료를 제거하고 싶으면?? (유용함)
+
+		//array -> set자료형으로 변경
+		var 명단 = ['john', 'tom', 'andy', 'tom'];
+		var 명단2 = new Set(명단);
+		console.log(명단2); //Set(3) {'john', 'tom', 'andy'}
+
+
+		//set -> array으로 변경1 : Spread Operator (전개 연산자) 이용
+		명단 = [...명단2];
+		console.log(명단); //(3) ['john', 'tom', 'andy']
+
+
+		//set -> array으로 변경2 : set자료형 반복문 돌리기
+		var arr = [];
+		명단2.forEach((x) => {
+			arr.push(x);
+		})
+		console.log(arr); // (3) ['john', 'tom', 'andy']
+
+
+		//set -> array으로 변경3 : Array.from() 이용
+		var arr2 = Array.from(명단2);
+		console.log(arr2); // (3) ['john', 'tom', 'andy']
+	</script>
+</body>
+
+</html>
