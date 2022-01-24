@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>shadow DOM과 template으로 HTML 모듈화</title>
+</head>
+
+<body>
+	<!-- shadow DOM 볼 수 있다 -->
+	<!-- <input type="range"> -->
+
+	<div id="mordor"></div>
+
+	<label>색상이 안빨개짐</label>
+
+	<custom-input></custom-input>
+
+	<!-- HTML 임시보관함 : Page에 안보여줌-->
+	<template id="template1">
+		<label>이메일을 입력해</label><input>
+		<style>
+			label {
+				color: red
+			}
+		</style>
+	</template>
+
+	<script>
+		//shadow DOM 만드는 법
+		//<div> 안에 <shadowRoot> 만들어줌 그 안에 숨길 태그 생성할 것
+		document.querySelector('#mordor').attachShadow({ mode: 'open' });
+		document.querySelector('#mordor').shadowRoot.innerHTML = `<p>심연에서 왔도다</p>`;
+
+		// 쓰는이유? Web Component + shadow DOM = 완벽한 HTML 모듈 -> 모듈화에 유용함
+
+		//Web Component에 스타일도 넣고싶으면? -> Shadow DOM 에 쓰면 좋음.
+		//왜냐하면 this.innerHTML에 바로 style태그 줘버리면 다른 태그에도 스타일 영향이 가기때문
+		class 클래스 extends HTMLElement {
+			connectedCallback() {
+				this.attachShadow({ mode: 'open' }); //shadow-root 열기
+				this.shadowRoot.append(template1.content.cloneNode(true)); //template 가져오기
+
+				// 이벤트 리스너 달기
+				let el = this.shadowRoot.querySelector('label');
+				el.addEventListener('click', function () {
+					console.log('클릭함');
+				})
+			}
+		}
+		customElements.define('custom-input', 클래스);
+	</script>
+</body>
+
+</html>
